@@ -15,6 +15,6 @@ class CharacterBaker:Baker<CharacterAuthoring>
         AddComponent(e, new Character
         {
             moveSpeed = authoring.moveSpeed
-        });;
+        });
     }
 }
