@@ -1,12 +1,12 @@
 using Unity.Entities;
 using UnityEngine;
 
-class CharacterAuthoring:MonoBehaviour
+class CharacterAuthoring : MonoBehaviour
 {
     public float moveSpeed = 300f;
 }
 
-class CharacterBaker:Baker<CharacterAuthoring>
+class CharacterBaker : Baker<CharacterAuthoring>
 {
     public override void Bake(CharacterAuthoring authoring)
     {

@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "com.unity.cinemachine": "2.9.5",
     "com.unity.collab-proxy": "2.0.1",
     "com.unity.entities": "1.0.0-pre.65",
     "com.unity.entities.graphics": "1.0.0-pre.65",
