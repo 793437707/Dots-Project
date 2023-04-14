@@ -450,7 +450,7 @@ MonoBehaviour:
   mouseSpawn: 0
   spawnPrefab: {fileID: 1683299747101753249, guid: dc9d5f7ca14a06642b1e3670533ac7e8,
     type: 3}
-  spawnCD: 1
+  spawnCD: 0.1
   nextSpawnTime: 1
   autoMove: 1
   moveSpeed: 10

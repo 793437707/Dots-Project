@@ -1,10 +1,12 @@
-﻿using Unity.Entities;
+﻿using Unity.Burst;
+using Unity.Entities;
 using Unity.Mathematics;
 using Unity.Physics;
 using Unity.Transforms;
 using UnityEngine;
 using UnityEngine.UIElements;
 
+[BurstCompile]
 [UpdateInGroup(typeof(InitializationSystemGroup))]
 partial class SpawnMobsSystem : SystemBase
 {
@@ -43,7 +45,7 @@ partial class SpawnMobsSystem : SystemBase
                     }
                 }
             })
-            .ScheduleParallel();
+            .Schedule();
 
         ecbSystem.AddJobHandleForProducer(Dependency);
     }
