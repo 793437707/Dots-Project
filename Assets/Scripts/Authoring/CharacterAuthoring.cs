@@ -3,7 +3,7 @@ using UnityEngine;
 
 class CharacterAuthoring : MonoBehaviour
 {
-    public float moveSpeed = 300f;
+    public float moveSpeed = 6f;
 }
 
 class CharacterBaker : Baker<CharacterAuthoring>

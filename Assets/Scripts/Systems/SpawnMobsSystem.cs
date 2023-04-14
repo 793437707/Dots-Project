@@ -1,8 +1,11 @@
 ﻿using Unity.Entities;
 using Unity.Mathematics;
+using Unity.Physics;
 using Unity.Transforms;
 using UnityEngine;
+using UnityEngine.UIElements;
 
+[UpdateInGroup(typeof(InitializationSystemGroup))]
 partial class SpawnMobsSystem : SystemBase
 {
     private EntityCommandBufferSystem ecbSystem;
@@ -28,7 +31,16 @@ partial class SpawnMobsSystem : SystemBase
 
                     var instance = ecb.Instantiate(entityInQueryIndex, spawnMobAspects.spawnMobs.ValueRO.spawnPrefab);
 
-                    ecb.SetComponent(entityInQueryIndex, instance, LocalTransform.FromPosition(spawnMobAspects.spawnTransform.ValueRO.Position));
+                    ecb.SetComponent(entityInQueryIndex, instance, LocalTransform.FromPositionRotation(
+                        spawnMobAspects.spawnTransform.ValueRO.Position, spawnMobAspects.spawnTransform.ValueRO.Rotation));
+
+                    if(spawnMobAspects.spawnMobs.ValueRO.autoMove)
+                    {
+                        ecb.SetComponent(entityInQueryIndex, instance, new PhysicsVelocity
+                        {
+                            Linear = spawnMobAspects.spawnTransform.ValueRO.Forward * spawnMobAspects.spawnMobs.ValueRO.moveSpeed
+                        }) ;
+                    }
                 }
             })
             .ScheduleParallel();

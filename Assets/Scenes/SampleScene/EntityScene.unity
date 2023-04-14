@@ -450,8 +450,10 @@ MonoBehaviour:
   mouseSpawn: 0
   spawnPrefab: {fileID: 1683299747101753249, guid: dc9d5f7ca14a06642b1e3670533ac7e8,
     type: 3}
-  spawnCD: 5
+  spawnCD: 1
   nextSpawnTime: 1
+  autoMove: 1
+  moveSpeed: 10
 --- !u!1 &1861223914
 GameObject:
   m_ObjectHideFlags: 0
@@ -551,7 +553,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6fdc508ee544dfd4c88b0ec336a170d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 300
+  moveSpeed: 6
 --- !u!114 &1861223920
 MonoBehaviour:
   m_ObjectHideFlags: 0

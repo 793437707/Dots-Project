@@ -9,4 +9,6 @@ struct SpawnMobs : IComponentData
     public Entity spawnPrefab;
     public float spawnCD;
     public float nextSpawnTime;
+    public bool autoMove;
+    public float moveSpeed;
 }

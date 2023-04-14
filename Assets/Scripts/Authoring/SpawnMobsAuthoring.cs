@@ -8,6 +8,8 @@ class SpawnMobsAuthoring : MonoBehaviour
     public GameObject spawnPrefab = null;
     public float spawnCD = 1f;
     public float nextSpawnTime = 1f;
+    public bool autoMove = true;
+    public float moveSpeed = 10f;
 }
 
 class SpawnMobsBaker : Baker<SpawnMobsAuthoring>
@@ -21,7 +23,9 @@ class SpawnMobsBaker : Baker<SpawnMobsAuthoring>
             mouseSpawn = authoring.mouseSpawn,
             spawnPrefab = GetEntity(authoring.spawnPrefab, TransformUsageFlags.Dynamic),
             spawnCD = authoring.spawnCD,
-            nextSpawnTime = authoring.nextSpawnTime
+            nextSpawnTime = authoring.nextSpawnTime,
+            autoMove = authoring.autoMove,
+            moveSpeed = authoring.moveSpeed
         });
     }
 }
