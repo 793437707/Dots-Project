@@ -1,0 +1,33 @@
+Shader: AnimationCooker/VtxAnimSimpleLit
+Database saved to: Assets/Scripts/AnimationGenerated/AnimDb.cs
+Output saved to: Assets/AnimationBake\Sparrow
+Root Bone name: root
+Enum Declaration: enabled
+Reset Rotation Before Bake: enabled
+Reset Position Before Bake: disabled
+Reset Scale Before Bake: disabled
+Ignore Bone Meshes: disabled
+Bone Adjust: disabled
+13fps, 512x512, 4194KB
+  0 Attack : 0.3846s 5f [0..4]
+  1 Bounce : 0.3846s 5f [5..9]
+  2 Clicked : 0.3846s 5f [10..14]
+  3 Death : 0.3846s 5f [15..19]
+  4 Eat : 0.3846s 5f [20..24]
+  5 Fear : 0.3846s 5f [25..29]
+  6 Fly : 0.3846s 5f [30..34]
+  7 Hit : 0.3846s 5f [35..39]
+  8 Idle_A : 0.3846s 5f [40..44]
+  9 Idle_B : 0.3846s 5f [45..49]
+  10 Idle_C : 0.3846s 5f [50..54]
+  11 Jump : 0.3846s 5f [55..59]
+  12 Roll : 0.3846s 5f [60..64]
+  13 Run : 0.3846s 5f [65..69]
+  14 Sit : 0.3846s 5f [70..74]
+  15 Spin : 0.3846s 5f [75..79]
+  16 Swim : 0.3846s 5f [80..84]
+  17 Walk : 0.3846s 5f [85..89]
+Expected frame count: 90, Actual frame count: 90
+Expected point count: 230282, Actual point count: 230282
+Fill ratio: 87.89063%.
+18 clips, 13fps, 6.9231s, 90f
