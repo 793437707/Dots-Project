@@ -8,8 +8,7 @@ using UnityEngine;
 
 public class CameraManager : MonoBehaviour
 {
-    private float cameraDistance = 3f;
-    private float cameraHeight = 10f;
+    public float3 cameraDis = new float3(0, 7, -2);
 
     private CinemachineVirtualCamera virtualCamera;
 
@@ -30,7 +29,7 @@ public class CameraManager : MonoBehaviour
         if (entities.Length > 0)
         {
             var translation = _entityManager.GetComponentData<LocalToWorld>(entities[0]);
-            virtualCamera.transform.position = translation.Position + new float3(0f, cameraHeight, -cameraDistance);
+            virtualCamera.transform.position = translation.Position + cameraDis;
             virtualCamera.transform.LookAt(translation.Position);
         }
     }

@@ -24,7 +24,8 @@ partial class CharacterSystem : SystemBase
         Entities
             .ForEach((CharacterAspects character) =>
             {
-                character.transform.ValueRW.Rotation = Quaternion.Lerp(character.transform.ValueRO.Rotation, quaInput, deltaTime * rotateSpeed);
+                if(input != Vector3.zero)
+                    character.transform.ValueRW.Rotation = Quaternion.Lerp(character.transform.ValueRO.Rotation, quaInput, deltaTime * rotateSpeed);
                 character.velocity.ValueRW.Linear = input * character.character.ValueRO.moveSpeed;
             })
             .Schedule();

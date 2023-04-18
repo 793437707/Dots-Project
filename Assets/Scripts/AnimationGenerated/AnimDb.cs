@@ -23,7 +23,38 @@
 				dict["Sparrow", "Spin"] = new AnimDbEntry { beginFrame = 75, endFrame = 79, interval = 0.07692308f, modelName = "Sparrow", clipName = "Spin", modelIndex = 0, clipIndex = 15 };
 				dict["Sparrow", "Swim"] = new AnimDbEntry { beginFrame = 80, endFrame = 84, interval = 0.07692308f, modelName = "Sparrow", clipName = "Swim", modelIndex = 0, clipIndex = 16 };
 				dict["Sparrow", "Walk"] = new AnimDbEntry { beginFrame = 85, endFrame = 89, interval = 0.07692308f, modelName = "Sparrow", clipName = "Walk", modelIndex = 0, clipIndex = 17 };
+				dict["Fox", "Fox_Attack_Paws"] = new AnimDbEntry { beginFrame = 0, endFrame = 9, interval = 0.06666667f, modelName = "Fox", clipName = "Fox_Attack_Paws", modelIndex = 1, clipIndex = 0 };
+				dict["Fox", "Fox_Attack_Tail"] = new AnimDbEntry { beginFrame = 10, endFrame = 21, interval = 0.06666667f, modelName = "Fox", clipName = "Fox_Attack_Tail", modelIndex = 1, clipIndex = 1 };
+				dict["Fox", "Fox_Falling"] = new AnimDbEntry { beginFrame = 22, endFrame = 34, interval = 0.06666667f, modelName = "Fox", clipName = "Fox_Falling", modelIndex = 1, clipIndex = 2 };
+				dict["Fox", "Fox_Falling_Left"] = new AnimDbEntry { beginFrame = 35, endFrame = 49, interval = 0.06666667f, modelName = "Fox", clipName = "Fox_Falling_Left", modelIndex = 1, clipIndex = 3 };
+				dict["Fox", "Fox_Idle"] = new AnimDbEntry { beginFrame = 50, endFrame = 79, interval = 0.06666667f, modelName = "Fox", clipName = "Fox_Idle", modelIndex = 1, clipIndex = 4 };
+				dict["Fox", "Fox_Jump"] = new AnimDbEntry { beginFrame = 80, endFrame = 97, interval = 0.06666667f, modelName = "Fox", clipName = "Fox_Jump", modelIndex = 1, clipIndex = 5 };
+				dict["Fox", "Fox_Jump_InAir"] = new AnimDbEntry { beginFrame = 98, endFrame = 112, interval = 0.06666667f, modelName = "Fox", clipName = "Fox_Jump_InAir", modelIndex = 1, clipIndex = 6 };
+				dict["Fox", "Fox_Jump_Pivot_InPlace"] = new AnimDbEntry { beginFrame = 113, endFrame = 130, interval = 0.06666667f, modelName = "Fox", clipName = "Fox_Jump_Pivot_InPlace", modelIndex = 1, clipIndex = 7 };
+				dict["Fox", "Fox_Run"] = new AnimDbEntry { beginFrame = 131, endFrame = 137, interval = 0.06666667f, modelName = "Fox", clipName = "Fox_Run", modelIndex = 1, clipIndex = 8 };
+				dict["Fox", "Fox_Run_InPlace"] = new AnimDbEntry { beginFrame = 138, endFrame = 144, interval = 0.06666667f, modelName = "Fox", clipName = "Fox_Run_InPlace", modelIndex = 1, clipIndex = 9 };
+				dict["Fox", "Fox_Run_Left"] = new AnimDbEntry { beginFrame = 145, endFrame = 151, interval = 0.06666667f, modelName = "Fox", clipName = "Fox_Run_Left", modelIndex = 1, clipIndex = 10 };
+				dict["Fox", "Fox_Run_Left_InPlace"] = new AnimDbEntry { beginFrame = 152, endFrame = 158, interval = 0.06666667f, modelName = "Fox", clipName = "Fox_Run_Left_InPlace", modelIndex = 1, clipIndex = 11 };
+				dict["Fox", "Fox_Run_Right"] = new AnimDbEntry { beginFrame = 159, endFrame = 165, interval = 0.06666667f, modelName = "Fox", clipName = "Fox_Run_Right", modelIndex = 1, clipIndex = 12 };
+				dict["Fox", "Fox_Run_Right_InPlace"] = new AnimDbEntry { beginFrame = 166, endFrame = 172, interval = 0.06666667f, modelName = "Fox", clipName = "Fox_Run_Right_InPlace", modelIndex = 1, clipIndex = 13 };
+				dict["Fox", "Fox_Sit1"] = new AnimDbEntry { beginFrame = 173, endFrame = 180, interval = 0.06666667f, modelName = "Fox", clipName = "Fox_Sit1", modelIndex = 1, clipIndex = 14 };
+				dict["Fox", "Fox_Sit2_Idle"] = new AnimDbEntry { beginFrame = 181, endFrame = 210, interval = 0.06666667f, modelName = "Fox", clipName = "Fox_Sit2_Idle", modelIndex = 1, clipIndex = 15 };
+				dict["Fox", "Fox_Sit3_StandUp"] = new AnimDbEntry { beginFrame = 211, endFrame = 218, interval = 0.06666667f, modelName = "Fox", clipName = "Fox_Sit3_StandUp", modelIndex = 1, clipIndex = 16 };
+				dict["Fox", "Fox_Sit_Idle_Break"] = new AnimDbEntry { beginFrame = 219, endFrame = 248, interval = 0.06666667f, modelName = "Fox", clipName = "Fox_Sit_Idle_Break", modelIndex = 1, clipIndex = 17 };
+				dict["Fox", "Fox_Sit_No"] = new AnimDbEntry { beginFrame = 249, endFrame = 278, interval = 0.06666667f, modelName = "Fox", clipName = "Fox_Sit_No", modelIndex = 1, clipIndex = 18 };
+				dict["Fox", "Fox_Sit_Yes"] = new AnimDbEntry { beginFrame = 279, endFrame = 297, interval = 0.06666667f, modelName = "Fox", clipName = "Fox_Sit_Yes", modelIndex = 1, clipIndex = 19 };
+				dict["Fox", "Fox_Somersault"] = new AnimDbEntry { beginFrame = 298, endFrame = 312, interval = 0.06666667f, modelName = "Fox", clipName = "Fox_Somersault", modelIndex = 1, clipIndex = 20 };
+				dict["Fox", "Fox_Somersault_InPlace"] = new AnimDbEntry { beginFrame = 313, endFrame = 327, interval = 0.06666667f, modelName = "Fox", clipName = "Fox_Somersault_InPlace", modelIndex = 1, clipIndex = 21 };
+				dict["Fox", "Fox_Walk"] = new AnimDbEntry { beginFrame = 328, endFrame = 342, interval = 0.06666667f, modelName = "Fox", clipName = "Fox_Walk", modelIndex = 1, clipIndex = 22 };
+				dict["Fox", "Fox_Walk_Back"] = new AnimDbEntry { beginFrame = 343, endFrame = 359, interval = 0.06666667f, modelName = "Fox", clipName = "Fox_Walk_Back", modelIndex = 1, clipIndex = 23 };
+				dict["Fox", "Fox_Walk_Back_InPlace"] = new AnimDbEntry { beginFrame = 360, endFrame = 376, interval = 0.06666667f, modelName = "Fox", clipName = "Fox_Walk_Back_InPlace", modelIndex = 1, clipIndex = 24 };
+				dict["Fox", "Fox_Walk_InPlace"] = new AnimDbEntry { beginFrame = 377, endFrame = 391, interval = 0.06666667f, modelName = "Fox", clipName = "Fox_Walk_InPlace", modelIndex = 1, clipIndex = 25 };
+				dict["Fox", "Fox_Walk_Left"] = new AnimDbEntry { beginFrame = 392, endFrame = 406, interval = 0.06666667f, modelName = "Fox", clipName = "Fox_Walk_Left", modelIndex = 1, clipIndex = 26 };
+				dict["Fox", "Fox_Walk_Left_InPlace"] = new AnimDbEntry { beginFrame = 407, endFrame = 421, interval = 0.06666667f, modelName = "Fox", clipName = "Fox_Walk_Left_InPlace", modelIndex = 1, clipIndex = 27 };
+				dict["Fox", "Fox_Walk_Right"] = new AnimDbEntry { beginFrame = 422, endFrame = 436, interval = 0.06666667f, modelName = "Fox", clipName = "Fox_Walk_Right", modelIndex = 1, clipIndex = 28 };
+				dict["Fox", "Fox_Walk_Right_InPlace"] = new AnimDbEntry { beginFrame = 437, endFrame = 451, interval = 0.06666667f, modelName = "Fox", clipName = "Fox_Walk_Right_InPlace", modelIndex = 1, clipIndex = 29 };
 			}
-			public enum Model { Sparrow }
+			public enum Model { Sparrow, Fox }
 			public enum Sparrow { Attack, Bounce, Clicked, Death, Eat, Fear, Fly, Hit, Idle_A, Idle_B, Idle_C, Jump, Roll, Run, Sit, Spin, Swim, Walk}
+			public enum Fox { Fox_Attack_Paws, Fox_Attack_Tail, Fox_Falling, Fox_Falling_Left, Fox_Idle, Fox_Jump, Fox_Jump_InAir, Fox_Jump_Pivot_InPlace, Fox_Run, Fox_Run_InPlace, Fox_Run_Left, Fox_Run_Left_InPlace, Fox_Run_Right, Fox_Run_Right_InPlace, Fox_Sit1, Fox_Sit2_Idle, Fox_Sit3_StandUp, Fox_Sit_Idle_Break, Fox_Sit_No, Fox_Sit_Yes, Fox_Somersault, Fox_Somersault_InPlace, Fox_Walk, Fox_Walk_Back, Fox_Walk_Back_InPlace, Fox_Walk_InPlace, Fox_Walk_Left, Fox_Walk_Left_InPlace, Fox_Walk_Right, Fox_Walk_Right_InPlace}
 		}

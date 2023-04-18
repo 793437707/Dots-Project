@@ -1,0 +1,45 @@
+Shader: AnimationCooker/VtxAnimSimpleLit
+Database saved to: Assets/Scripts/AnimationGenerated/AnimDb.cs
+Output saved to: Assets/AnimationBake\Fox
+Root Bone name: Fox_Pelvis
+Enum Declaration: enabled
+Reset Rotation Before Bake: disabled
+Reset Position Before Bake: disabled
+Reset Scale Before Bake: disabled
+Ignore Bone Meshes: disabled
+Bone Adjust: disabled
+15fps, 1024x1024, 16777KB
+  0 Fox_Attack_Paws : 0.6667s 10f [0..9]
+  1 Fox_Attack_Tail : 0.8s 12f [10..21]
+  2 Fox_Falling : 0.8667s 13f [22..34]
+  3 Fox_Falling_Left : 1s 15f [35..49]
+  4 Fox_Idle : 2s 30f [50..79]
+  5 Fox_Jump : 1.2s 18f [80..97]
+  6 Fox_Jump_InAir : 1s 15f [98..112]
+  7 Fox_Jump_Pivot_InPlace : 1.2s 18f [113..130]
+  8 Fox_Run : 0.4667s 7f [131..137]
+  9 Fox_Run_InPlace : 0.4667s 7f [138..144]
+  10 Fox_Run_Left : 0.4667s 7f [145..151]
+  11 Fox_Run_Left_InPlace : 0.4667s 7f [152..158]
+  12 Fox_Run_Right : 0.4667s 7f [159..165]
+  13 Fox_Run_Right_InPlace : 0.4667s 7f [166..172]
+  14 Fox_Sit1 : 0.5333s 8f [173..180]
+  15 Fox_Sit2_Idle : 2s 30f [181..210]
+  16 Fox_Sit3_StandUp : 0.5333s 8f [211..218]
+  17 Fox_Sit_Idle_Break : 2s 30f [219..248]
+  18 Fox_Sit_No : 2s 30f [249..278]
+  19 Fox_Sit_Yes : 1.2667s 19f [279..297]
+  20 Fox_Somersault : 1s 15f [298..312]
+  21 Fox_Somersault_InPlace : 1s 15f [313..327]
+  22 Fox_Walk : 1s 15f [328..342]
+  23 Fox_Walk_Back : 1.1333s 17f [343..359]
+  24 Fox_Walk_Back_InPlace : 1.1333s 17f [360..376]
+  25 Fox_Walk_InPlace : 1s 15f [377..391]
+  26 Fox_Walk_Left : 1s 15f [392..406]
+  27 Fox_Walk_Left_InPlace : 1s 15f [407..421]
+  28 Fox_Walk_Right : 1s 15f [422..436]
+  29 Fox_Walk_Right_InPlace : 1s 15f [437..451]
+Expected frame count: 452, Actual frame count: 452
+Expected point count: 1025256, Actual point count: 1025256
+Fill ratio: 97.85156%.
+30 clips, 15fps, 30.1333s, 452f
