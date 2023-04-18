@@ -189,11 +189,12 @@ public class AnimationKitchenWindow : EditorWindow
     {
         SaveSettings();
     }
-
+    Vector2 scrollPos = Vector2.zero;
     // this gets called whenver the GUI needs to be refreshed.
     // it is where we draw all of the controls.
     void OnGUI()
     {
+        scrollPos = EditorGUILayout.BeginScrollView(scrollPos, GUILayout.Width(position.width - 10), GUILayout.Height(position.height - 50));
         // playback shader
         EditorGUI.BeginChangeCheck();
         m_playbackShader = EditorGUILayout.ObjectField(new GUIContent("Playback Shader", "The shader that will be used for the material that gets generated. (default AnimationCooker/VtxAnimUnlit)"), m_playbackShader, typeof(Shader), true) as Shader;
@@ -299,6 +300,8 @@ public class AnimationKitchenWindow : EditorWindow
         // warning text area
         EditorGUILayout.PrefixLabel("Warnings:");
         EditorGUILayout.TextArea(m_warningText, EditorStyles.textArea);
+
+        EditorGUILayout.EndScrollView();
     }
 
     void OnBtnResetNames()
