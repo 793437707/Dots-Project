@@ -20,7 +20,7 @@ partial class AutoDestorySystem : SystemBase
         float deltaTime = SystemAPI.Time.DeltaTime;
 
         Entities
-            .ForEach((AutoDestoryAspects autoDestory, int entityInQueryIndex) =>
+            .ForEach((ref AutoDestoryAspects autoDestory, in int entityInQueryIndex) =>
             {
                 autoDestory.lastTime -= deltaTime;
                 if(autoDestory.lastTime < 0f)

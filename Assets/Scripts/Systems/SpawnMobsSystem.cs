@@ -23,7 +23,7 @@ partial class SpawnMobsSystem : SystemBase
         bool mouseInput = true;
 
         Entities.
-            ForEach((SpawnMobAspects spawnMobAspects, int entityInQueryIndex) =>
+            ForEach((ref SpawnMobAspects spawnMobAspects, in int entityInQueryIndex) =>
             {
                 spawnMobAspects.spawnMobs.ValueRW.nextSpawnTime -= deltaTime;
                 if ((spawnMobAspects.spawnMobs.ValueRO.autoSpawn || spawnMobAspects.spawnMobs.ValueRO.mouseSpawn && mouseInput)

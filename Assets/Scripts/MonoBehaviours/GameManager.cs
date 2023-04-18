@@ -3,9 +3,12 @@ using UnityEngine;
 
 class GameManager : MonoBehaviour
 {
-    public int FPSMax = 60;
+    [Tooltip("The target frame-rate for the app. If set it to zero, the rate won't be set.  (default 0)")] public int m_appTargetFrameRate = 0;
+    [Tooltip("The vsync count for the app. If set to zero, the count won't be set. (default 0)")] public int m_vSyncCount = 0;
+
     private void Awake()
     {
-        Application.targetFrameRate = FPSMax;
+        if (m_appTargetFrameRate >= 0) { Application.targetFrameRate = m_appTargetFrameRate; }
+        if (m_vSyncCount >= 0) { QualitySettings.vSyncCount = m_vSyncCount; }
     }
 }

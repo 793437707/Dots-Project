@@ -22,7 +22,7 @@ partial class CharacterSystem : SystemBase
         Quaternion quaInput = input == Vector3.zero ? Quaternion.identity : Quaternion.LookRotation(input, Vector3.up);
 
         Entities
-            .ForEach((CharacterAspects character) =>
+            .ForEach((ref CharacterAspects character) =>
             {
                 if(input != Vector3.zero)
                     character.transform.ValueRW.Rotation = Quaternion.Lerp(character.transform.ValueRO.Rotation, quaInput, deltaTime * rotateSpeed);
