@@ -216,6 +216,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fox_Baked
       objectReference: {fileID: 0}
+    - target: {fileID: 7461985756681373865, guid: 02ca9f86cd8002f4193f85c350bf3cd0,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
