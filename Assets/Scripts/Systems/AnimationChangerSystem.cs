@@ -13,7 +13,9 @@ partial class AnimationChangerSystem : SystemBase
         Entities
             .ForEach((ref CharacterAspects character, ref AnimationCmdData cmd, in AnimationStateData state) =>
             {
-                AnimDb.Fox newIndex = character.velocity.ValueRO.Linear.Equals(float3.zero) ? AnimDb.Fox.Fox_Idle : AnimDb.Fox.Fox_Run_InPlace;
+                float3 speed = character.velocity.ValueRO.Linear;
+                speed.y = 0;
+                AnimDb.Fox newIndex = speed.Equals(float3.zero) ? AnimDb.Fox.Fox_Idle : AnimDb.Fox.Fox_Run_InPlace;
                 if (state.foreverClipIndex != (byte)newIndex)
                 {
                     cmd.cmd = AnimationCmd.SetPlayForever;
