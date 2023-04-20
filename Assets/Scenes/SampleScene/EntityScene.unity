@@ -164,7 +164,7 @@ PrefabInstance:
     - target: {fileID: 3590731596624147071, guid: 02ca9f86cd8002f4193f85c350bf3cd0,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 0.3
       objectReference: {fileID: 0}
     - target: {fileID: 3590731596624147071, guid: 02ca9f86cd8002f4193f85c350bf3cd0,
         type: 3}
@@ -395,7 +395,7 @@ MonoBehaviour:
     x: 0
     y: 0
     z: 0
-  m_GravityFactor: 0
+  m_GravityFactor: 1
   m_OverrideDefaultMassDistribution: 0
   m_CenterOfMass:
     x: 0

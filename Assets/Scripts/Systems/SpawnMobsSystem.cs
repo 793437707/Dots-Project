@@ -4,11 +4,8 @@ using Unity.Mathematics;
 using Unity.Physics;
 using Unity.Transforms;
 using UnityEngine;
-using UnityEngine.UIElements;
-using static Unity.Physics.Math;
-using static Unity.VisualScripting.AnnotationUtility;
 
-
+[BurstCompile]
 [UpdateInGroup(typeof(InitializationSystemGroup))]
 partial class SpawnMobsSystem : SystemBase
 {
