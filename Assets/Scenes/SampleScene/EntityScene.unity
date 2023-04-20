@@ -337,12 +337,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c3bc450d620d3b7418261953e9644642, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  autoSpawn: 1
-  mouseSpawn: 0
+  autoSpawn: 0
+  mouseSpawn: 1
   spawnPrefab: {fileID: 1683299747101753249, guid: dc9d5f7ca14a06642b1e3670533ac7e8,
     type: 3}
-  spawnCD: 0.1
-  nextSpawnTime: 5
+  spawnCD: 0.3
+  nextSpawnTime: 0
   autoMove: 1
   moveSpeed: 10
 --- !u!1 &1565548666 stripped

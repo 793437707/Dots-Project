@@ -14,7 +14,6 @@ public class CameraManager : MonoBehaviour
 
     private EntityManager _entityManager;
     private EntityQuery _entityQuery;
-    
 
     void Start()
     {
