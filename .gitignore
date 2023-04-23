@@ -3,6 +3,7 @@ Temp/
 .vs/
 Logs/
 obj/
+BuildGame/
 *.vsconfig
 *.sln
 *.csproj
