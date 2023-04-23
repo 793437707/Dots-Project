@@ -22,6 +22,7 @@ partial class SpawnMobsSystem : SystemBase
         bool mouseInput = Input.GetMouseButton(0) || GameManager.MouseAutoSpawn;
         //鼠标输入的射线
         UnityEngine.Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        Entity parent = GameManager.GetEntityForTag("SpawnMob");
 
         Entities.
             ForEach((ref SpawnMobAspects spawnMobAspects, in int entityInQueryIndex) =>
@@ -34,7 +35,8 @@ partial class SpawnMobsSystem : SystemBase
                     spawnMobAspects.spawnMobs.ValueRW.nextSpawnTime = spawnMobAspects.spawnMobs.ValueRO.spawnCD;
                     //生成物体
                     var instance = ecb.Instantiate(entityInQueryIndex, spawnMobAspects.spawnMobs.ValueRO.spawnPrefab);
-    
+                    ecb.AddComponent(entityInQueryIndex, instance, new Parent { Value = parent });
+
                     LocalTransform localTransform = LocalTransform.FromPositionRotation(
                         spawnMobAspects.spawnTransform.ValueRO.Position, spawnMobAspects.spawnTransform.ValueRO.Rotation);
 

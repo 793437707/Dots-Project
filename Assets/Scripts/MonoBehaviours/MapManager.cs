@@ -59,7 +59,6 @@ public class MapManager : MonoBehaviour
             {
                 //生成实体
                 Entity plane = entityManager.Instantiate(planePrefab);
-                //修改父节点
                 entityManager.SetComponentData(plane, new Parent { Value = parent });
                 //修改坐标
                 entityManager.SetComponentData(plane, LocalTransform.FromPosition(new float3(posx, 0, posz)));
@@ -77,6 +76,8 @@ public class MapManager : MonoBehaviour
 
     public void func()
     {
+        Debug.Log("Start CreatMap For Seed " + MapSeed);
         CreatPlantMap();
+        Debug.Log("End CreateMap For Seed " + MapSeed);
     }
 }

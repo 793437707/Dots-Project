@@ -1,8 +1,6 @@
-using System.Collections.Generic;
 using Unity.Collections;
 using Unity.Entities;
 using Unity.Scenes;
-using Unity.Transforms;
 using UnityEngine;
 
 class GameManager : MonoBehaviour
@@ -12,7 +10,9 @@ class GameManager : MonoBehaviour
 
     public static bool MouseAutoSpawn;
     public static int MapSeed = 1919191;
-    public SubScene scene;
+
+    public SubScene subScene;
+    private Entity subSceneEntity;
 
     private static EntityManager entityManager;
     private static EntityQuery tagQuery;
@@ -46,5 +46,18 @@ class GameManager : MonoBehaviour
         return entity;
     }
 
+    public void LoadGameScene()
+    {
+        Debug.Log("Load Game Start");
+        subSceneEntity = SceneSystem.LoadSceneAsync(World.DefaultGameObjectInjectionWorld.Unmanaged, subScene.SceneGUID);
+        Debug.Log("Load Game End");
+    }
 
+    public void UnloadGameScene()
+    {
+        Debug.Log("Unload Game Start");
+        SceneSystem.UnloadScene(World.DefaultGameObjectInjectionWorld.Unmanaged, subSceneEntity);
+        Debug.Log("Unload Game End");
+
+    }
 }
