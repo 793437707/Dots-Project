@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using Unity.Collections;
 using Unity.Entities;
@@ -77,5 +78,10 @@ class GameManager : MonoBehaviour
         SceneSystem.UnloadScene(World.DefaultGameObjectInjectionWorld.Unmanaged, subSceneEntity);
         Debug.Log("Unload Game End");
 
+    }
+
+    public static void TimeLog(string str = "")
+    {
+        Debug.Log(string.Format("[{0}] Call [{1}]", DateTime.Now.Ticks.ToString(), str));
     }
 }
