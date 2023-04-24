@@ -14,6 +14,8 @@ public class CameraManager : MonoBehaviour
 
     private EntityManager _entityManager;
     private EntityQuery _entityQuery;
+    private const float MAXFOV = 90;
+    private const float MINFOV = 30;
 
     void Start()
     {
@@ -31,5 +33,13 @@ public class CameraManager : MonoBehaviour
             virtualCamera.transform.position = translation.Position + cameraDis;
             virtualCamera.transform.LookAt(translation.Position);
         }
+
+        //滚轮缩放
+        float lastFOV = virtualCamera.m_Lens.FieldOfView;
+        lastFOV -= Input.GetAxis("Mouse ScrollWheel") * 10;
+        lastFOV = math.max(lastFOV, MINFOV);
+        lastFOV = math.min(lastFOV, MAXFOV);
+        virtualCamera.m_Lens.FieldOfView = lastFOV;
+
     }
 }
