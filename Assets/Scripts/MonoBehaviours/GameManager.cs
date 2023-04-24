@@ -19,6 +19,7 @@ class GameManager : MonoBehaviour
     private static EntityQuery tagQuery;
 
     public static MapManager mapManager;
+    public static CameraManager cameraManager;
 
     private void Awake()
     {

@@ -1,5 +1,4 @@
 ﻿using Cinemachine;
-using System.Collections;
 using Unity.Collections;
 using Unity.Entities;
 using Unity.Mathematics;
@@ -17,14 +16,21 @@ public class CameraManager : MonoBehaviour
     private const float MAXFOV = 90;
     private const float MINFOV = 30;
 
-    void Start()
+    void Awake()
     {
         virtualCamera = GetComponent<CinemachineVirtualCamera>();
         _entityManager = World.DefaultGameObjectInjectionWorld.EntityManager;
         _entityQuery = _entityManager.CreateEntityQuery(ComponentType.ReadOnly<Character>(), ComponentType.ReadOnly<LocalToWorld>());
+        GameManager.cameraManager = GetComponent<CameraManager>();
     }
 
     private void LateUpdate()
+    {
+        UpdateCameraPos();
+        UpdateCameraFOV();
+    }
+
+    public void UpdateCameraPos()
     {
         var entities = _entityQuery.ToEntityArray(Allocator.TempJob);
         if (entities.Length > 0)
@@ -33,13 +39,14 @@ public class CameraManager : MonoBehaviour
             virtualCamera.transform.position = translation.Position + cameraDis;
             virtualCamera.transform.LookAt(translation.Position);
         }
+    }
 
-        //滚轮缩放
+    private void UpdateCameraFOV()
+    {
         float lastFOV = virtualCamera.m_Lens.FieldOfView;
         lastFOV -= Input.GetAxis("Mouse ScrollWheel") * 10;
         lastFOV = math.max(lastFOV, MINFOV);
         lastFOV = math.min(lastFOV, MAXFOV);
         virtualCamera.m_Lens.FieldOfView = lastFOV;
-
     }
 }
