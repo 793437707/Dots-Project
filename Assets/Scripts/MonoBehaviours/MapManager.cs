@@ -74,7 +74,7 @@ public class MapManager : MonoBehaviour
         }
     }
 
-    public void func()
+    public void CreateMap()
     {
         Debug.Log("Start CreatMap For Seed " + MapSeed);
         CreatPlantMap();

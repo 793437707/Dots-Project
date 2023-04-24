@@ -1,3 +1,4 @@
+using System.Collections;
 using Unity.Collections;
 using Unity.Entities;
 using Unity.Scenes;
@@ -17,8 +18,12 @@ class GameManager : MonoBehaviour
     private static EntityManager entityManager;
     private static EntityQuery tagQuery;
 
+    public static MapManager mapManager;
+
     private void Awake()
     {
+        mapManager = GetComponent<MapManager>();
+
         if (m_appTargetFrameRate >= 0) { Application.targetFrameRate = m_appTargetFrameRate; }
         if (m_vSyncCount >= 0) { QualitySettings.vSyncCount = m_vSyncCount; }
         LoadSetting();
@@ -49,7 +54,19 @@ class GameManager : MonoBehaviour
     public void LoadGameScene()
     {
         Debug.Log("Load Game Start");
-        subSceneEntity = SceneSystem.LoadSceneAsync(World.DefaultGameObjectInjectionWorld.Unmanaged, subScene.SceneGUID);
+        subSceneEntity = SceneSystem.LoadSceneAsync(World.DefaultGameObjectInjectionWorld.Unmanaged, subScene.SceneGUID, new SceneSystem.LoadParameters { Flags = SceneLoadFlags.BlockOnStreamIn});
+        
+        MapManager.MapSeed = 1919191;
+        StartCoroutine(LoadGame());
+    }
+    IEnumerator LoadGame()
+    {
+        //等待场景加载完
+        yield return null;
+        yield return null;
+        yield return null;
+        mapManager.CreateMap();
+
         Debug.Log("Load Game End");
     }
 
