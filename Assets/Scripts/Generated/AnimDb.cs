@@ -53,8 +53,16 @@
 				dict["Fox", "Fox_Walk_Left_InPlace"] = new AnimDbEntry { beginFrame = 407, endFrame = 421, interval = 0.06666667f, modelName = "Fox", clipName = "Fox_Walk_Left_InPlace", modelIndex = 1, clipIndex = 27 };
 				dict["Fox", "Fox_Walk_Right"] = new AnimDbEntry { beginFrame = 422, endFrame = 436, interval = 0.06666667f, modelName = "Fox", clipName = "Fox_Walk_Right", modelIndex = 1, clipIndex = 28 };
 				dict["Fox", "Fox_Walk_Right_InPlace"] = new AnimDbEntry { beginFrame = 437, endFrame = 451, interval = 0.06666667f, modelName = "Fox", clipName = "Fox_Walk_Right_InPlace", modelIndex = 1, clipIndex = 29 };
+				dict["Zombie", "Z_Idle"] = new AnimDbEntry { beginFrame = 0, endFrame = 41, interval = 0.0625f, modelName = "Zombie", clipName = "Z_Idle", modelIndex = 2, clipIndex = 0 };
+				dict["Zombie", "Z_Attack"] = new AnimDbEntry { beginFrame = 42, endFrame = 57, interval = 0.0625f, modelName = "Zombie", clipName = "Z_Attack", modelIndex = 2, clipIndex = 1 };
+				dict["Zombie", "Z_FallingBack"] = new AnimDbEntry { beginFrame = 58, endFrame = 79, interval = 0.0625f, modelName = "Zombie", clipName = "Z_FallingBack", modelIndex = 2, clipIndex = 2 };
+				dict["Zombie", "Z_Run_InPlace"] = new AnimDbEntry { beginFrame = 80, endFrame = 103, interval = 0.0625f, modelName = "Zombie", clipName = "Z_Run_InPlace", modelIndex = 2, clipIndex = 3 };
+				dict["Zombie", "Z_Walk1_InPlace"] = new AnimDbEntry { beginFrame = 104, endFrame = 135, interval = 0.0625f, modelName = "Zombie", clipName = "Z_Walk1_InPlace", modelIndex = 2, clipIndex = 4 };
+				dict["Zombie", "Z_Walk_InPlace"] = new AnimDbEntry { beginFrame = 136, endFrame = 167, interval = 0.0625f, modelName = "Zombie", clipName = "Z_Walk_InPlace", modelIndex = 2, clipIndex = 5 };
+				dict["Zombie", "Z_FallingForward"] = new AnimDbEntry { beginFrame = 168, endFrame = 185, interval = 0.0625f, modelName = "Zombie", clipName = "Z_FallingForward", modelIndex = 2, clipIndex = 6 };
 			}
-			public enum Model { Sparrow, Fox }
+			public enum Model { Sparrow, Fox, Zombie }
 			public enum Sparrow { Attack, Bounce, Clicked, Death, Eat, Fear, Fly, Hit, Idle_A, Idle_B, Idle_C, Jump, Roll, Run, Sit, Spin, Swim, Walk}
 			public enum Fox { Fox_Attack_Paws, Fox_Attack_Tail, Fox_Falling, Fox_Falling_Left, Fox_Idle, Fox_Jump, Fox_Jump_InAir, Fox_Jump_Pivot_InPlace, Fox_Run, Fox_Run_InPlace, Fox_Run_Left, Fox_Run_Left_InPlace, Fox_Run_Right, Fox_Run_Right_InPlace, Fox_Sit1, Fox_Sit2_Idle, Fox_Sit3_StandUp, Fox_Sit_Idle_Break, Fox_Sit_No, Fox_Sit_Yes, Fox_Somersault, Fox_Somersault_InPlace, Fox_Walk, Fox_Walk_Back, Fox_Walk_Back_InPlace, Fox_Walk_InPlace, Fox_Walk_Left, Fox_Walk_Left_InPlace, Fox_Walk_Right, Fox_Walk_Right_InPlace}
+			public enum Zombie { Z_Idle, Z_Attack, Z_FallingBack, Z_Run_InPlace, Z_Walk1_InPlace, Z_Walk_InPlace, Z_FallingForward}
 		}

@@ -1,0 +1,22 @@
+Shader: AnimationCooker/VtxAnimSimpleLit
+Database saved to: Assets/Scripts/Generated/AnimDb.cs
+Output saved to: Assets/AnimationBake\Zombie
+Root Bone name: Base HumanPelvis
+Enum Declaration: enabled
+Reset Rotation Before Bake: disabled
+Reset Position Before Bake: disabled
+Reset Scale Before Bake: disabled
+Ignore Bone Meshes: disabled
+Bone Adjust: disabled
+16fps, 1024x512, 8388KB
+  0 Z_Idle : 2.625s 42f [0..41]
+  1 Z_Attack : 1s 16f [42..57]
+  2 Z_FallingBack : 1.375s 22f [58..79]
+  3 Z_Run_InPlace : 1.5s 24f [80..103]
+  4 Z_Walk1_InPlace : 2s 32f [104..135]
+  5 Z_Walk_InPlace : 2s 32f [136..167]
+  6 Z_FallingForward : 1.125s 18f [168..185]
+Expected frame count: 186, Actual frame count: 186
+Expected point count: 498016, Actual point count: 498016
+Fill ratio: 95.11719%.
+7 clips, 16fps, 11.625s, 186f
