@@ -25,7 +25,7 @@ partial class CharacterSystem : SystemBase
             .ForEach((ref CharacterAspects character) =>
             {
                 if(input != Vector3.zero)
-                    character.transform.ValueRW.Rotation = Quaternion.Lerp(character.transform.ValueRO.Rotation, quaInput, deltaTime * rotateSpeed);
+                    character.localTransform.ValueRW.Rotation = Quaternion.Lerp(character.localTransform.ValueRO.Rotation, quaInput, deltaTime * rotateSpeed);
                 var gravity = character.velocity.ValueRO.Linear.y;
                 character.velocity.ValueRW.Linear = input * character.character.ValueRO.moveSpeed;
                 character.velocity.ValueRW.Linear.y = gravity;

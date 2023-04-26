@@ -13,8 +13,8 @@ using static UnityEngine.EventSystems.EventTrigger;
 public class MapManager : MonoBehaviour
 {
     public static uint MapSeed = 1919191;
-    public static int Length = 10;
-    public static int Width = 10;
+    public static int Length = 30;
+    public static int Width = 30;
 
     public GameObject goPlane = null;
     public static float2 planeSize = float2.zero;

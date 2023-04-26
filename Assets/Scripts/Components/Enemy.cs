@@ -6,4 +6,18 @@ using UnityEngine;
 struct Enemy : IComponentData
 {
     public int hp;
+    public int damage;
+    public float attackCD;
+    public float attackTime;
+    public float attackSize;
+    public float runSize;
+    public float runSpeed;
+    public float walkSize;
+    public float walkSpeed;
+    public float deadStayTime;
+    public EnemyAnimatior animatior;
+    public EnemyMobs mob;
 }
+
+public enum EnemyAnimatior { Idle, Walk, Run, AttackFirst, Attack, Dead }
+public enum EnemyMobs { Zombie, NULL }

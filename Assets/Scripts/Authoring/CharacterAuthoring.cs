@@ -4,6 +4,7 @@ using UnityEngine;
 class CharacterAuthoring : MonoBehaviour
 {
     public float moveSpeed = 6f;
+    public int hp = 100;
 }
 
 class CharacterBaker : Baker<CharacterAuthoring>
@@ -14,7 +15,8 @@ class CharacterBaker : Baker<CharacterAuthoring>
         //AddComponent<Character>(e);
         AddComponent(e, new Character
         {
-            moveSpeed = authoring.moveSpeed
+            moveSpeed = authoring.moveSpeed,
+            hp = authoring.hp
         });
     }
 }
