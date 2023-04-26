@@ -1,4 +1,5 @@
 ﻿using Unity.Burst;
+using Unity.Collections;
 using Unity.Entities;
 using Unity.Mathematics;
 using Unity.Physics;
@@ -22,11 +23,12 @@ partial class EnemySystem : SystemBase
         var ecb = ecbSystem.CreateCommandBuffer().AsParallelWriter();
         float deltaTime = SystemAPI.Time.DeltaTime;
 
+        //获取玩家坐标
         Entity character = GameManager.GetEntityForTag("Character");
         float3 characerPos = character == Entity.Null ? float3.zero : EntityManager.GetComponentData<LocalToWorld>(character).Position;
-
         characerPos.y = 0;
-        ComponentLookup<Character> characterData = GetComponentLookup<Character>();
+        //修改血量所需的NativeArray
+        NativeArray<int> attack = new NativeArray<int>(1, Allocator.TempJob);
 
         Entities
             .ForEach((ref EnemyAspects enemy, in int entityInQueryIndex, in Entity entity) =>
@@ -65,9 +67,7 @@ partial class EnemySystem : SystemBase
                     enemy.enemy.ValueRW.attackTime = enemy.enemy.ValueRO.attackCD;
                     newAnimator = EnemyAnimatior.AttackFirst;
                     //扣玩家血
-                    //Character data = characterData[character];
-                    //data.hp -= enemy.enemy.ValueRO.damage;
-                    //characterData[character] = data;
+                    attack[0] += enemy.enemy.ValueRO.damage;
                 }
                 else if(dis < enemy.enemy.ValueRO.runSize)
                 {
@@ -87,6 +87,16 @@ partial class EnemySystem : SystemBase
 
             })
             .ScheduleParallel();
+
+        
+
+        //修改血量
+        Entities
+            .ForEach((ref Character character) =>
+            {
+                character.hp -= attack[0];
+            })
+            .Schedule();
         ecbSystem.AddJobHandleForProducer(Dependency);
     }
 }

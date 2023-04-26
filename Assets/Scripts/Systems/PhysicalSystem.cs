@@ -6,7 +6,8 @@ using Unity.Physics.Systems;
 using System.Diagnostics;
 
 [UpdateInGroup(typeof(FixedStepSimulationSystemGroup))]
-[UpdateAfter(typeof(PhysicsSimulationGroup))] // We are updating after `PhysicsSimulationGroup` - this means that we will get the events of the current frame.
+//[UpdateAfter(typeof(PhysicsSimulationGroup))] // We are updating after `PhysicsSimulationGroup` - this means that we will get the events of the current frame.
+[UpdateAfter(typeof(PhysicsSystemGroup))]
 partial class PhysicalSystem : SystemBase
 {
     public static float3 DestoryPos = new float3(-10000, -1000, -10000);
