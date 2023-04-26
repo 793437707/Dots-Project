@@ -19,5 +19,5 @@ struct Enemy : IComponentData
     public EnemyMobs mob;
 }
 
-public enum EnemyAnimatior { Idle, Walk, Run, AttackFirst, Attack, Dead }
+public enum EnemyAnimatior { Idle, Walk, Run, AttackFirst, Attack, DeadFirst, Dead }
 public enum EnemyMobs { Zombie, NULL }

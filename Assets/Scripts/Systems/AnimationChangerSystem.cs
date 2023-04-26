@@ -23,6 +23,44 @@ partial class AnimationChangerSystem : SystemBase
                 }
             })
             .Schedule();
+        Entities
+            .ForEach((ref Enemy enemy, ref AnimationCmdData cmd, in AnimationStateData state) =>
+            {
+                switch(enemy.animatior)
+                {
+                    case EnemyAnimatior.AttackFirst:
+                        cmd.cmd = AnimationCmd.PlayOnce;
+                        cmd.clipIndex = (byte)AnimDb.Zombie.Z_Attack;
+                        break;
+                    case EnemyAnimatior.Run:
+                        if(state.foreverClipIndex != (byte)AnimDb.Zombie.Z_Run_InPlace)
+                        {
+                            cmd.cmd = AnimationCmd.SetPlayForever;
+                            cmd.clipIndex = (byte)AnimDb.Zombie.Z_Run_InPlace;
+                        }
+                        break;
+                    case EnemyAnimatior.Walk:
+                        if (state.foreverClipIndex != (byte)AnimDb.Zombie.Z_Walk_InPlace)
+                        {
+                            cmd.cmd = AnimationCmd.SetPlayForever;
+                            cmd.clipIndex = (byte)AnimDb.Zombie.Z_Walk_InPlace;
+                        }
+                        break;
+                    case EnemyAnimatior.Idle:
+                        if (state.foreverClipIndex != (byte)AnimDb.Zombie.Z_Idle)
+                        {
+                            cmd.cmd = AnimationCmd.SetPlayForever;
+                            cmd.clipIndex = (byte)AnimDb.Zombie.Z_Idle;
+                        }
+                        break;
+                    case EnemyAnimatior.DeadFirst:
+                        enemy.animatior = EnemyAnimatior.Dead;
+                        cmd.cmd = AnimationCmd.PlayOnceAndStop;
+                        cmd.clipIndex = (byte)AnimDb.Zombie.Z_FallingBack;
+                        break;
+                }
+            })
+            .ScheduleParallel();
     }
 
 }

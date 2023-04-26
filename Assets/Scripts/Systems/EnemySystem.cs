@@ -33,8 +33,14 @@ partial class EnemySystem : SystemBase
             {
                 if(enemy.enemy.ValueRO.hp <= 0)
                 {
+                    //理论上不会第二次进入foreach，因为已经不符合Aspect，速度被删了
                     if (enemy.enemy.ValueRO.animatior != EnemyAnimatior.Dead)
+                    {
+                        enemy.enemy.ValueRW.animatior = EnemyAnimatior.DeadFirst;
                         ecb.AddComponent(entityInQueryIndex, entity, new AutoDestory { destoryTime = enemy.enemy.ValueRO.deadStayTime });
+                        ecb.RemoveComponent<PhysicsCollider>(entityInQueryIndex, entity);
+                        ecb.RemoveComponent<PhysicsVelocity>(entityInQueryIndex, entity);
+                    }
                     return;
                 }
                 //修改朝向

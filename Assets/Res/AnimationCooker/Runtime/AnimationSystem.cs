@@ -61,7 +61,9 @@ public partial class AnimationSystem : SystemBase
                 AnimDbEntry clip = localDatabase[state.modelIndex][(int)clipIndexProp.clipIndex];
                 // end time is (interval * frame count) / speed multipliers
                 float endTime = clip.interval * (clip.endFrame - clip.beginFrame + 1) / speed.multiplier;
-                if ((curTimeProp.time + deltaTime) >= endTime) { // if clip finished playing
+                //禁用最后0.1s，防止返回到foreverClipIndex重复播放一次导致闪烁，1fps/5FPS都不好使
+                if ((curTimeProp.time + deltaTime) >= endTime || state.mode == AnimationPlayMode.PlayOnceAndStop && (curTimeProp.time + 0.1f) >= endTime)
+                { // if clip finished playing
                     if (state.mode == AnimationPlayMode.PlayForever) {
                         curTimeProp.time = 0f; // reset to beginning
                     } else if (state.mode == AnimationPlayMode.PlayOnce) {

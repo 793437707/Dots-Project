@@ -31,7 +31,7 @@ Transform:
   m_GameObject: {fileID: 7801683674958991425}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -1.655, y: 0, z: -1.013}
-  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
+  m_LocalScale: {x: 1.2, y: 1.2, z: 1.2}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
@@ -314,11 +314,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hp: 30
   damage: 10
-  attackCD: 0.5
+  attackCD: 0.9
   attackSize: 2
   runSize: 10
   runSpeed: 7
   walkSize: 25
-  walkSpeed: 4
+  walkSpeed: 2
   deadStayTime: 5
   mob: 0
