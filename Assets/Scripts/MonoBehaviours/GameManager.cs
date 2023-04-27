@@ -80,6 +80,22 @@ class GameManager : MonoBehaviour
 
     }
 
+    private bool isPause = false;
+    public void SwitchPause()
+    {
+        isPause = !isPause;
+        if (isPause)
+        {
+            Time.timeScale = 0;
+            Debug.Log("Game Paused!");
+        }
+        else
+        {
+            Time.timeScale = 1;
+            Debug.Log("Game Resumed!");
+        }
+    }
+
     public static void TimeLog(string str = "")
     {
         Debug.Log(string.Format("[{0}] Call [{1}]", DateTime.Now.Ticks.ToString(), str));
