@@ -26,6 +26,7 @@ public class MapManager : MonoBehaviour
 
     private void Awake()
     {
+        GameManager.mapManager = this;
         if(goPlane != null)
         {
             planeSize.x = goPlane.GetComponent<MeshFilter>().sharedMesh.bounds.size.x * goPlane.transform.localScale.x;
