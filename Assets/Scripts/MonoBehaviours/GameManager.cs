@@ -22,6 +22,8 @@ class GameManager : MonoBehaviour
     public static MapManager mapManager;
     public static CameraManager cameraManager;
 
+    private bool isPause = false;
+
     private void Awake()
     {
         mapManager = GetComponent<MapManager>();
@@ -56,6 +58,7 @@ class GameManager : MonoBehaviour
     public void LoadGameScene()
     {
         Debug.Log("Load Game Start");
+        SwitchPause();
         subSceneEntity = SceneSystem.LoadSceneAsync(World.DefaultGameObjectInjectionWorld.Unmanaged, subScene.SceneGUID, new SceneSystem.LoadParameters { Flags = SceneLoadFlags.BlockOnStreamIn});
         
         MapManager.MapSeed = 1919191;
@@ -68,19 +71,19 @@ class GameManager : MonoBehaviour
         yield return null;
         yield return null;
         mapManager.CreateMap();
-
+        SwitchPause();
         Debug.Log("Load Game End");
     }
 
     public void UnloadGameScene()
     {
         Debug.Log("Unload Game Start");
+        SwitchPause();
         SceneSystem.UnloadScene(World.DefaultGameObjectInjectionWorld.Unmanaged, subSceneEntity);
+        SwitchPause();
         Debug.Log("Unload Game End");
 
     }
-
-    private bool isPause = false;
     public void SwitchPause()
     {
         isPause = !isPause;
