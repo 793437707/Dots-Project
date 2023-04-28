@@ -4,7 +4,7 @@ using UnityEngine;
 public class UIManager : MonoBehaviour
 {
 
-    private GameObject Main, Setting, Loading;
+    private GameObject Main, Setting, Loading, Game;
 
     private void Awake()
     {
@@ -12,23 +12,19 @@ public class UIManager : MonoBehaviour
         Main = transform.Find("Main").gameObject;
         Setting = transform.Find("Setting").gameObject;
         Loading = transform.Find("Loading").gameObject;
+        Game = transform.Find("Game").gameObject;
 
         Main.SetActive(true);
         Setting.SetActive(false);
         Loading.SetActive(false);
+        Game.SetActive(false);
     }
 
 
 
     public void StartGame()
     {
-        Main.SetActive(false);
         GameManager.gameManager.LoadGameScene();
-    }
-
-    public void SwitchSetting()
-    {
-        Setting.SetActive(!Setting.activeSelf);
     }
 
     public void ExitGameInMain()
@@ -43,7 +39,6 @@ public class UIManager : MonoBehaviour
 
     public void ExitGameInGame()
     {
-        Main.SetActive(true);
         GameManager.gameManager.UnloadGameScene();
     }
 
