@@ -2,13 +2,8 @@
 using Unity.Entities;
 using Unity.Mathematics;
 using Unity.Rendering;
-using Unity.Scenes;
 using Unity.Transforms;
 using UnityEngine;
-using UnityEngine.Rendering;
-using UnityEngine.SceneManagement;
-using UnityEngine.UIElements;
-using static UnityEngine.EventSystems.EventTrigger;
 
 public class MapManager : MonoBehaviour
 {
@@ -44,12 +39,13 @@ public class MapManager : MonoBehaviour
     public void CreatPlantMap()
     {
         Entity parent = GameManager.GetEntityForTag("Plane");
-        if(entityManager.HasComponent<Child>(parent) == false)
+        Entity planePrefab = GameManager.GetEntityForTag("PlanePrefab");
+        if (parent == Entity.Null || planePrefab == Entity.Null)
         {
-            Debug.LogError("None Prefab For Map/Plane");
+            Debug.LogError("None Prefab For Plane / PlanePrefab");
             return;
         }
-        Entity planePrefab = entityManager.GetBuffer<Child>(parent)[0].Value;
+        
         random = new Unity.Mathematics.Random(MapSeed);
 
         float posx = planeSize.x * Length / 2;
@@ -60,7 +56,7 @@ public class MapManager : MonoBehaviour
             {
                 //生成实体
                 Entity plane = entityManager.Instantiate(planePrefab);
-                entityManager.SetComponentData(plane, new Parent { Value = parent });
+                entityManager.AddComponentData(plane, new Parent { Value = parent });
                 //修改坐标
                 entityManager.SetComponentData(plane, LocalTransform.FromPosition(new float3(posx, 0, posz)));
                 //修改材质  目前是随机

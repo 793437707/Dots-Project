@@ -60,7 +60,7 @@ class GameManager : MonoBehaviour
     {
         Debug.Log("Load Game Start");
         SwitchPause();
-        subSceneEntity = SceneSystem.LoadSceneAsync(World.DefaultGameObjectInjectionWorld.Unmanaged, subScene.SceneGUID, new SceneSystem.LoadParameters { Flags = SceneLoadFlags.BlockOnStreamIn});
+        subSceneEntity = SceneSystem.LoadSceneAsync(World.DefaultGameObjectInjectionWorld.Unmanaged, subScene.SceneGUID);
         
         MapManager.MapSeed = 1919191;
         StartCoroutine(LoadGame());
@@ -68,9 +68,9 @@ class GameManager : MonoBehaviour
     IEnumerator LoadGame()
     {
         //等待场景加载完
+        yield return new WaitUntil(() => SceneSystem.IsSceneLoaded(World.DefaultGameObjectInjectionWorld.Unmanaged,subSceneEntity));
         yield return null;
-        yield return null;
-        yield return null;
+
         mapManager.CreateMap();
         SwitchPause();
         Debug.Log("Load Game End");
