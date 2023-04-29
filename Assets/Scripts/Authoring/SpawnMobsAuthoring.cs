@@ -10,6 +10,7 @@ class SpawnMobsAuthoring : MonoBehaviour
     public float nextSpawnTime = 1f;
     public bool autoMove = true;
     public float moveSpeed = 10f;
+    public float DestoryTime = 1f;
 }
 
 class SpawnMobsBaker : Baker<SpawnMobsAuthoring>
@@ -25,7 +26,8 @@ class SpawnMobsBaker : Baker<SpawnMobsAuthoring>
             spawnCD = authoring.spawnCD,
             nextSpawnTime = authoring.nextSpawnTime,
             autoMove = authoring.autoMove,
-            moveSpeed = authoring.moveSpeed
+            moveSpeed = authoring.moveSpeed,
+            destoryTime = authoring.DestoryTime
         });
     }
 }

@@ -3,8 +3,12 @@ using Unity.Mathematics;
 using Unity.Transforms;
 using Unity.Physics;
 using Unity.Physics.Systems;
+using Unity.Collections;
 using System.Diagnostics;
+using System.ComponentModel;
+using Unity.Burst;
 
+[BurstCompile]
 [UpdateInGroup(typeof(FixedStepSimulationSystemGroup))]
 //[UpdateAfter(typeof(PhysicsSimulationGroup))] // We are updating after `PhysicsSimulationGroup` - this means that we will get the events of the current frame.
 [UpdateAfter(typeof(PhysicsSystemGroup))]
@@ -17,6 +21,9 @@ partial class PhysicalSystem : SystemBase
         public ComponentLookup<Bullet> bulletData;
         public ComponentLookup<Enemy> enemyData;
         public ComponentLookup<LocalTransform> localTransformData;
+        public int Damage;
+        [WriteOnly]
+        public NativeArray<int> damageOut;
         public void Execute(TriggerEvent collisionEvent)
         {
             Entity a = Entity.Null, b = Entity.Null;
@@ -35,7 +42,7 @@ partial class PhysicalSystem : SystemBase
             if (enemyData.HasComponent(b))
             {
                 Enemy enemy = enemyData[b];
-                enemy.hp -= bulletData[a].damage;
+                enemy.hp -= bulletData[a].damage * Damage / 100;
                 enemyData[b] = enemy;
             }
         }
@@ -43,13 +50,32 @@ partial class PhysicalSystem : SystemBase
 
     protected override void OnUpdate()
     {
+        NativeArray<int> damageOut = new NativeArray<int>(1, Allocator.TempJob);
+
         Dependency = new BulletTriggerEvents
         {
             autoDestoryData = GetComponentLookup<AutoDestory>(),
             bulletData = GetComponentLookup<Bullet>(),
             enemyData = GetComponentLookup<Enemy>(),
-            localTransformData = GetComponentLookup<LocalTransform>()
+            localTransformData = GetComponentLookup<LocalTransform>(),
+            Damage = CharacterData.Damage,
+            damageOut = damageOut
         }
         .Schedule(SystemAPI.GetSingleton<SimulationSingleton>(),Dependency);
+
+        //吸血
+        var MaxHpAdd = CharacterData.MaxHpAdd;
+        var MaxHpMul = CharacterData.MaxHpMul;
+        var XiXue = CharacterData.XiXue;
+        Entities
+            .ForEach((ref Character character) =>
+            {
+                var MaxHp = (character.hp + MaxHpAdd) * MaxHpMul / 100;
+                character.hp += damageOut[0] * XiXue / 100;
+                character.hp = math.min(MaxHp, character.hp);
+            })
+            .Schedule();
+        //删除NativeArray
+        damageOut.Dispose(Dependency);
     }
 }

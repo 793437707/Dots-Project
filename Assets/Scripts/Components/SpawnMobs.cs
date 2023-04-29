@@ -11,4 +11,5 @@ struct SpawnMobs : IComponentData
     public float nextSpawnTime;
     public bool autoMove;
     public float moveSpeed;
+    public float destoryTime;
 }

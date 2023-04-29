@@ -23,11 +23,15 @@ partial class SpawnMobsSystem : SystemBase
         //鼠标输入的射线
         UnityEngine.Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         Entity parent = GameManager.GetEntityForTag("SpawnMob");
+        
+        var PinLv = CharacterData.PinLv;
+        var SheCheng = CharacterData.SheCheng;
+        var FlySpeed = CharacterData.FlySpeed;
 
         Entities.
             ForEach((ref SpawnMobAspects spawnMobAspects, in int entityInQueryIndex) =>
             {
-                spawnMobAspects.spawnMobs.ValueRW.nextSpawnTime -= deltaTime;
+                spawnMobAspects.spawnMobs.ValueRW.nextSpawnTime -= deltaTime * PinLv / 100;
                 if ((spawnMobAspects.spawnMobs.ValueRO.autoSpawn || spawnMobAspects.spawnMobs.ValueRO.mouseSpawn && mouseInput)
                     && spawnMobAspects.spawnMobs.ValueRO.nextSpawnTime < 0)
                 {
@@ -61,9 +65,16 @@ partial class SpawnMobsSystem : SystemBase
                     {
                         ecb.SetComponent(entityInQueryIndex, instance, new PhysicsVelocity
                         {
-                            Linear = localTransform.Forward() * spawnMobAspects.spawnMobs.ValueRO.moveSpeed
+                            Linear = localTransform.Forward() * spawnMobAspects.spawnMobs.ValueRO.moveSpeed * FlySpeed / 100
                         }) ;
                     }
+
+                    //子弹销毁，修改射程
+                    AutoDestory autoDestory = new AutoDestory
+                    {
+                        destoryTime = spawnMobAspects.spawnMobs.ValueRO.destoryTime * SheCheng / 100
+                    };
+                    ecb.AddComponent(entityInQueryIndex, instance, autoDestory);
                 }
             })
             .Schedule();
