@@ -378,6 +378,7 @@ MonoBehaviour:
   nextSpawnTime: 0
   autoMove: 1
   moveSpeed: 10
+  DestoryTime: 1
 --- !u!4 &798646604
 Transform:
   m_ObjectHideFlags: 0
