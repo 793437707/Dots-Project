@@ -70,7 +70,7 @@ partial class PhysicalSystem : SystemBase
         Entities
             .ForEach((ref Character character) =>
             {
-                var MaxHp = (character.hp + MaxHpAdd) * MaxHpMul / 100;
+                var MaxHp = (character.hpMax + MaxHpAdd) * MaxHpMul / 100;
                 character.hp += damageOut[0] * XiXue / 100;
                 character.hp = math.min(MaxHp, character.hp);
             })
