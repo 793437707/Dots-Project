@@ -31,6 +31,17 @@ partial class CharacterSystem : SystemBase
                 character.velocity.ValueRW.Linear.y = gravity;
             })
             .Schedule();
+        //死亡判定，由于死亡后游戏暂停，只会触发一次。
+        Entities
+            .ForEach((in Character character) =>
+            {
+                if (character.hp <= 0 && !GameManager.GameOver)
+                {
+                    GameManager.uIManager.ShowDead();
+                }
+            })
+            .WithoutBurst()
+            .Run();
     }
     
 }

@@ -24,6 +24,8 @@ class GameManager : MonoBehaviour
     public static UIManager uIManager;
     public static GameManager gameManager;
 
+    public static bool GameOver = false;
+
     private bool isPause = false;
 
     private void Awake()
@@ -63,6 +65,7 @@ class GameManager : MonoBehaviour
         subSceneEntity = SceneSystem.LoadSceneAsync(World.DefaultGameObjectInjectionWorld.Unmanaged, subScene.SceneGUID);
         
         MapManager.MapSeed = 1919191;
+        GameOver = false;
         StartCoroutine(LoadGame());
     }
     IEnumerator LoadGame()
