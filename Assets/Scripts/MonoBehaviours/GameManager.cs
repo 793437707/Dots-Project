@@ -24,7 +24,7 @@ class GameManager : MonoBehaviour
     public static UIManager uIManager;
     public static GameManager gameManager;
 
-    public static bool GameOver = false;
+    public bool GameOver = false;
 
     private bool isPause = false;
 
@@ -33,6 +33,8 @@ class GameManager : MonoBehaviour
         gameManager = this;
         if (m_appTargetFrameRate >= 0) { Application.targetFrameRate = m_appTargetFrameRate; }
         if (m_vSyncCount >= 0) { QualitySettings.vSyncCount = m_vSyncCount; }
+
+        GameData.Inst.LoadData();
         LoadSetting();
 
         entityManager = World.DefaultGameObjectInjectionWorld.EntityManager;
@@ -77,6 +79,9 @@ class GameManager : MonoBehaviour
         CharacterData.Inst.Reset();
 
         mapManager.CreateMap();
+
+        WorldData.Inst.totalSeconds = 0;
+
         SwitchPause();
         Debug.Log("Load Game End");
     }
@@ -103,6 +108,18 @@ class GameManager : MonoBehaviour
             Time.timeScale = 1;
             Debug.Log("Game Resumed!");
         }
+    }
+
+    public void GameDead()
+    {
+        SwitchPause();
+        GameOver = true;
+        uIManager.ShowDead();
+        //修改记录相关
+        GameData.Inst.MaxPlayTime = Math.Max(GameData.Inst.MaxPlayTime, (int)WorldData.Inst.totalSeconds);
+
+
+        GameData.Inst.SavaData();
     }
 
     public static void TimeLog(string str = "")

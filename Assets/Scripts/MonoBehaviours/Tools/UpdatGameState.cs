@@ -11,7 +11,7 @@ public class UpdatGameState : MonoBehaviour
     TextMeshProUGUI text;
     Transform HP, MP;
     Image HPImage, MPImage;
-    Text HPText, MPText;
+    Text HPText, MPText, LastTimeText;
 
     void Start()
     {
@@ -21,19 +21,15 @@ public class UpdatGameState : MonoBehaviour
         MPImage = MP.Find("Bar").GetComponent<Image>();
         HPText = HP.Find("Text").GetComponent<Text>();
         MPText = MP.Find("Text").GetComponent<Text>();
+        LastTimeText = transform.Find("LastTimeText").GetComponent<Text>();
     }
 
     void LateUpdate()
     {
         Entity characterEntity = GameManager.GetEntityForTag("Character");
-        if(characterEntity == Entity.Null)
-        {
-            HPImage.fillAmount = 1;
-            MPImage.fillAmount = 1;
-            HPText.text = "?/?";
-            MPText.text = "?/?";
-            return;
-        }
+        if (characterEntity == Entity.Null) return;
+
+        //显示血条蓝条
         Character character = World.DefaultGameObjectInjectionWorld.EntityManager.GetComponentData<Character>(characterEntity);
         var hpMax = (character.hpMax + CharacterData.Inst.MaxHpAdd) * CharacterData.Inst.MaxHpMul / 100;
         var mpMax = (character.mpMax + CharacterData.Inst.MaxMpAdd) * CharacterData.Inst.MaxMpMul / 100;
@@ -41,5 +37,9 @@ public class UpdatGameState : MonoBehaviour
         MPImage.fillAmount = 1.0f * character.mp / mpMax;
         HPText.text = $"{character.hp}/{hpMax}";
         MPText.text = $"{character.mp}/{mpMax}";
+        //显示游玩时间
+        WorldData.Inst.totalSeconds += Time.deltaTime;
+        LastTimeText.text = string.Format("{0:D2} : {1:D2}", WorldData.Inst.minute, WorldData.Inst.second);
+
     }
 }

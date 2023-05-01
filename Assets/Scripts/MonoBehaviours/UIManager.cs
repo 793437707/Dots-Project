@@ -22,8 +22,6 @@ public class UIManager : MonoBehaviour
         Dead.SetActive(false);
     }
 
-
-
     public void StartGame()
     {
         GameManager.gameManager.LoadGameScene();
@@ -51,8 +49,6 @@ public class UIManager : MonoBehaviour
 
     public void ShowDead()
     {
-        GameManager.GameOver = true;
-        SwitchPauseInGame();
         Game.transform.Find("SettingBtn").gameObject.SetActive(false);
         Dead.SetActive(true);
     }

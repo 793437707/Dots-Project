@@ -35,9 +35,9 @@ partial class CharacterSystem : SystemBase
         Entities
             .ForEach((in Character character) =>
             {
-                if (character.hp <= 0 && !GameManager.GameOver)
+                if (character.hp <= 0 && !GameManager.gameManager.GameOver)
                 {
-                    GameManager.uIManager.ShowDead();
+                    GameManager.gameManager.GameDead();
                 }
             })
             .WithoutBurst()

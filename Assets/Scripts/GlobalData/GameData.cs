@@ -17,6 +17,13 @@ public class GameData
             return inst;
         }
     }
+    private GameData()
+    {
+        MaxPlayTime = 0;
+    }
+
+    public int MaxPlayTime;
+
     string path = Application.persistentDataPath + "/GameData.dat";
     //读取数据
     public void LoadData()
@@ -26,6 +33,7 @@ public class GameData
             string data = File.ReadAllText(path);
             JsonUtility.FromJsonOverwrite(data, this);
         }
+        Debug.LogError("MaxPlayTime:" + MaxPlayTime);
     }
     //保存数据
     public void SavaData()
