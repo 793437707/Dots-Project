@@ -122,7 +122,8 @@ class GameManager : MonoBehaviour
     {
         //修改记录相关
         GameData.Inst.MaxPlayTime = Math.Max(GameData.Inst.MaxPlayTime, (int)WorldData.Inst.totalSeconds);
-
+        GameData.Inst.PlayTimes += 1;
+        GameData.Inst.TotalPlayTime += (int)WorldData.Inst.totalSeconds;
 
         GameData.Inst.SavaData();
     }

@@ -20,9 +20,13 @@ public class GameData
     private GameData()
     {
         MaxPlayTime = 0;
+        PlayTimes = 0;
+        TotalPlayTime = 0;
     }
 
     public int MaxPlayTime;
+    public int PlayTimes;
+    public int TotalPlayTime;
 
     string path = Application.persistentDataPath + "/GameData.dat";
     //读取数据
