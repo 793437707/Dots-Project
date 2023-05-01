@@ -36,7 +36,7 @@ partial class EnemySystem : SystemBase
             {
                 if(enemy.enemy.ValueRO.hp <= 0)
                 {
-                    //理论上不会第二次进入foreach，因为已经不符合Aspect，速度被删了
+                    //怪物死亡：理论上不会第二次进入foreach，因为已经不符合Aspect，速度被删了
                     if (enemy.enemy.ValueRO.animatior != EnemyAnimatior.Dead)
                     {
                         enemy.enemy.ValueRW.animatior = EnemyAnimatior.DeadFirst;

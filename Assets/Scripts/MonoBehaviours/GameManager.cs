@@ -115,6 +115,11 @@ class GameManager : MonoBehaviour
         SwitchPause();
         GameOver = true;
         uIManager.ShowDead();
+        SaveLocalGameData();
+    }
+
+    public void SaveLocalGameData()
+    {
         //修改记录相关
         GameData.Inst.MaxPlayTime = Math.Max(GameData.Inst.MaxPlayTime, (int)WorldData.Inst.totalSeconds);
 

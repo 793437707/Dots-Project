@@ -47,6 +47,11 @@ public class UIManager : MonoBehaviour
         GameManager.gameManager.SwitchPause();
     }
 
+    public void SaveLocalGameData()
+    {
+        GameManager.gameManager.SaveLocalGameData();
+    }
+
     public void ShowDead()
     {
         Game.transform.Find("SettingBtn").gameObject.SetActive(false);
