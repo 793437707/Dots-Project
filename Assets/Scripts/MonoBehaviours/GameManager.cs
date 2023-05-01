@@ -74,7 +74,7 @@ class GameManager : MonoBehaviour
         yield return new WaitUntil(() => SceneSystem.IsSceneLoaded(World.DefaultGameObjectInjectionWorld.Unmanaged,subSceneEntity));
         yield return null;
 
-        CharacterData.Reset();
+        CharacterData.Inst.Reset();
 
         mapManager.CreateMap();
         SwitchPause();

@@ -29,7 +29,7 @@ partial class EnemySystem : SystemBase
         characerPos.y = 0;
         //修改血量所需的NativeArray
         NativeArray<int> attack = new NativeArray<int>(1, Allocator.TempJob);
-        var GetDamage = CharacterData.GetDamage;
+        var GetDamage = CharacterData.Inst.GetDamage;
 
         Entities
             .ForEach((ref EnemyAspects enemy, in int entityInQueryIndex, in Entity entity) =>

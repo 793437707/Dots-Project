@@ -35,8 +35,8 @@ public class UpdatGameState : MonoBehaviour
             return;
         }
         Character character = World.DefaultGameObjectInjectionWorld.EntityManager.GetComponentData<Character>(characterEntity);
-        var hpMax = (character.hpMax + CharacterData.MaxHpAdd) * CharacterData.MaxHpMul / 100;
-        var mpMax = (character.mpMax + CharacterData.MaxMpAdd) * CharacterData.MaxMpMul / 100;
+        var hpMax = (character.hpMax + CharacterData.Inst.MaxHpAdd) * CharacterData.Inst.MaxHpMul / 100;
+        var mpMax = (character.mpMax + CharacterData.Inst.MaxMpAdd) * CharacterData.Inst.MaxMpMul / 100;
         HPImage.fillAmount = 1.0f * character.hp / hpMax;
         MPImage.fillAmount = 1.0f * character.mp / mpMax;
         HPText.text = $"{character.hp}/{hpMax}";

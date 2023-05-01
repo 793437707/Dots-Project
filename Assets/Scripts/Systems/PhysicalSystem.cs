@@ -58,15 +58,15 @@ partial class PhysicalSystem : SystemBase
             bulletData = GetComponentLookup<Bullet>(),
             enemyData = GetComponentLookup<Enemy>(),
             localTransformData = GetComponentLookup<LocalTransform>(),
-            Damage = CharacterData.Damage,
+            Damage = CharacterData.Inst.Damage,
             damageOut = damageOut
         }
         .Schedule(SystemAPI.GetSingleton<SimulationSingleton>(),Dependency);
 
         //吸血
-        var MaxHpAdd = CharacterData.MaxHpAdd;
-        var MaxHpMul = CharacterData.MaxHpMul;
-        var XiXue = CharacterData.XiXue;
+        var MaxHpAdd = CharacterData.Inst.MaxHpAdd;
+        var MaxHpMul = CharacterData.Inst.MaxHpMul;
+        var XiXue = CharacterData.Inst.XiXue;
         Entities
             .ForEach((ref Character character) =>
             {

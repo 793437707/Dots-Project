@@ -4,20 +4,33 @@ using UnityEngine;
 
 public class CharacterData
 {
-    public static int MaxHpAdd;
-    public static int MaxHpMul;
-    public static int MaxMpAdd;//没用到
-    public static int MaxMpMul;//没用到
-    public static int MaxLevel;//没用到
-    public static int Damage;
-    public static int PinLv;
-    public static int SheCheng;
-    public static int FlySpeed;
-    public static int Lucky;//没用到
-    public static int XiXue;
-    public static int GetDamage;
+    //单例模式
+    private static CharacterData inst;
+    public static CharacterData Inst
+    {
+        get
+        {
+            if (inst == null)
+            {
+                inst = new CharacterData();
+            }
+            return inst;
+        }
+    }
+    public int MaxHpAdd;
+    public int MaxHpMul;
+    public int MaxMpAdd;//没用到
+    public int MaxMpMul;//没用到
+    public int MaxLevel;//没用到
+    public int Damage;
+    public int PinLv;
+    public int SheCheng;
+    public int FlySpeed;
+    public int Lucky;//没用到
+    public int XiXue;
+    public int GetDamage;
 
-    public static void Reset()
+    public void Reset()
     {
         MaxHpAdd = 0;
         MaxHpMul = 100;

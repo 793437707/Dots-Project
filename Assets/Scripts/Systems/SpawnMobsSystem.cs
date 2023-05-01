@@ -24,9 +24,9 @@ partial class SpawnMobsSystem : SystemBase
         UnityEngine.Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         Entity parent = GameManager.GetEntityForTag("SpawnMob");
         
-        var PinLv = CharacterData.PinLv;
-        var SheCheng = CharacterData.SheCheng;
-        var FlySpeed = CharacterData.FlySpeed;
+        var PinLv = CharacterData.Inst.PinLv;
+        var SheCheng = CharacterData.Inst.SheCheng;
+        var FlySpeed = CharacterData.Inst.FlySpeed;
 
         Entities.
             ForEach((ref SpawnMobAspects spawnMobAspects, in int entityInQueryIndex) =>
