@@ -28,4 +28,18 @@ public class DatabasesManager : MonoBehaviour
         progress.x = math.min(progress.x, progress.y);
         return progress;
     }
+
+    public void AchievementFinish(int id)
+    {
+        if(AchievementIsFinished(id))
+        {
+            Debug.LogError("Achievement is already finished!");
+            return;
+        }
+        GameData.Inst.AchievementReceive[id] = true;
+        GameData.Inst.GlodCoin += achievement.data[id].reward;
+        GameData.Inst.SavaData();
+        Debug.Log("Finish Achievement! id = " + id);
+    }
+
 }

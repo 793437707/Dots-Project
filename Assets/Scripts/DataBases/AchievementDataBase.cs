@@ -15,14 +15,12 @@ public struct AchievementCondition
 [Serializable]
 public struct AchievementData
 {
-    [Header("ID，用于存储数据，等同下标")]
-    public int id;
+    [Header("标题，任务名称")]
+    public string title;
     [Header("描述")]
     public string des;
     [Header("达成条件")]
     public AchievementCondition condition;
-    [Header("前置任务ID")]
-    public int preId;
     [Header("奖励")]
     public int reward;
 }

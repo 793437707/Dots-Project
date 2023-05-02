@@ -13,10 +13,57 @@ MonoBehaviour:
   m_Name: AchievementDataBase
   m_EditorClassIdentifier: 
   data:
-  - id: 0
-    des: 
+  - title: "\u4E16\u754C\u521D\u63A2\u7D22"
+    des: "\u6E38\u73A9\u6E38\u620F\u4E09\u6B21"
+    condition:
+      type: 1
+      value: 3
+    reward: 15
+  - title: "\u5192\u9669\u5BB6"
+    des: "\u6E38\u73A9\u6E38\u620F\u5341\u6B21"
+    condition:
+      type: 1
+      value: 10
+    reward: 40
+  - title: "\u4E45\u7ECF\u6C99\u573A"
+    des: "\u6E38\u73A9\u6E38\u620F\u4E94\u5341\u6B21"
+    condition:
+      type: 1
+      value: 50
+    reward: 150
+  - title: "\u8FD9\u6E38\u620F\u5C31\u662F\u8FD9\u4E48\u73A9\u7684"
+    des: "\u5355\u6B21\u6E38\u73A9\u65F6\u957F\u8FBE\u5230\u4E94\u5206\u949F"
     condition:
       type: 0
-      value: 0
-    preId: 0
-    reward: 0
+      value: 300
+    reward: 20
+  - title: "\u575A\u6301\u624D\u662F\u80DC\u5229"
+    des: "\u5355\u6B21\u6E38\u73A9\u65F6\u957F\u8FBE\u5230\u5341\u4E94\u5206\u949F"
+    condition:
+      type: 0
+      value: 900
+    reward: 70
+  - title: "\u65E0\u5C3D\u7684\u5F81\u9014"
+    des: "\u5355\u6B21\u6E38\u73A9\u65F6\u957F\u8FBE\u5230\u4E09\u5341\u5206\u949F"
+    condition:
+      type: 0
+      value: 3000
+    reward: 150
+  - title: "\u521D\u4F53\u9A8C"
+    des: "\u6E38\u620F\u65F6\u95F4\u8FBE\u5230\u5341\u5206\u949F"
+    condition:
+      type: 2
+      value: 600
+    reward: 15
+  - title: "\u719F\u80FD\u751F\u5DE7"
+    des: "\u6E38\u620F\u65F6\u95F4\u8FBE\u5230\u4E00\u5C0F\u65F6"
+    condition:
+      type: 2
+      value: 3600
+    reward: 50
+  - title: "\u5411\u7740\u65F6\u95F4\u4E4B\u672B"
+    des: "\u6E38\u620F\u65F6\u95F4\u8FBE\u5230\u5341\u5C0F\u65F6"
+    condition:
+      type: 2
+      value: 36000
+    reward: 300

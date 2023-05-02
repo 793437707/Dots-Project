@@ -25,12 +25,14 @@ public class GameData
         MaxPlayTime = 0;
         PlayTimes = 0;
         TotalPlayTime = 0;
+        GlodCoin = 0;
         AchievementReceive = new List<bool>();
     }
 
     public int MaxPlayTime;
     public int PlayTimes;
     public int TotalPlayTime;
+    public int GlodCoin;
 
     public List<bool> AchievementReceive;
 
@@ -68,5 +70,6 @@ public enum GameDataEnum
 {
     MaxPlayTime,
     PlayTimes,
-    TotalPlayTime
+    TotalPlayTime,
+    GlodCoin,
 }
