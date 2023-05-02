@@ -7266,6 +7266,7 @@ GameObject:
   - component: {fileID: 1412220500}
   - component: {fileID: 1412220501}
   - component: {fileID: 1412220502}
+  - component: {fileID: 1412220503}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -7336,6 +7337,19 @@ MonoBehaviour:
   - {fileID: 2100000, guid: 48f041cea6e8ffc4daba48842e7739ae, type: 2}
   - {fileID: 2100000, guid: 50cbaf0312d84914cbebeb0e8be0d75a, type: 2}
   - {fileID: 2100000, guid: 7cb8b58a2e14e3d47b67fe0295935dc8, type: 2}
+--- !u!114 &1412220503
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1412220499}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4958192943de9a747879ec8250f0ebc6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  achievement: {fileID: 11400000, guid: 9bdf1217d4ae3524b86e84c2db60d948, type: 2}
 --- !u!4 &1417330032 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4984980826245493072, guid: 0e5709a7ddb77924090c112cf73bb98a,

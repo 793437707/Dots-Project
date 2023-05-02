@@ -23,6 +23,7 @@ class GameManager : MonoBehaviour
     public static CameraManager cameraManager;
     public static UIManager uIManager;
     public static GameManager gameManager;
+    public static DatabasesManager databasesManager;
 
     public bool GameOver = false;
 
@@ -34,11 +35,14 @@ class GameManager : MonoBehaviour
         if (m_appTargetFrameRate >= 0) { Application.targetFrameRate = m_appTargetFrameRate; }
         if (m_vSyncCount >= 0) { QualitySettings.vSyncCount = m_vSyncCount; }
 
-        GameData.Inst.LoadData();
-        LoadSetting();
-
         entityManager = World.DefaultGameObjectInjectionWorld.EntityManager;
         tagQuery = entityManager.CreateEntityQuery(ComponentType.ReadOnly<Tag>());
+    }
+
+    private void Start()
+    {
+        GameData.Inst.LoadData();
+        LoadSetting();
     }
 
     private void LoadSetting()
