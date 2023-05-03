@@ -12,6 +12,7 @@ public class DatabasesManager : MonoBehaviour
     public AchievementDataBase achievement;
     public TianFuDataBase tianfu;
 
+
     public int AchievementGetSize()
     {
         return achievement.data.Count;
@@ -43,4 +44,56 @@ public class DatabasesManager : MonoBehaviour
         Debug.Log("Finish Achievement! id = " + id);
     }
 
+
+
+
+    public int TianFuGetSize()
+    {
+        return tianfu.data.Count;
+    }
+
+    public int TianFuGetLevel(int id)
+    {
+        return GameData.Inst.TianFuLevel[id];
+    }
+
+    public int TianFuGetCost(int id, int level)
+    {
+        return tianfu.data[id].cost[level];
+    }
+
+    public int TianFuGetMaxLevel(int id)
+    {
+        return tianfu.data[id].cost.Length;
+    }
+
+    public Sprite TianFuGetIcon(int id)
+    {
+        return tianfu.images[tianfu.data[id].iconID];
+    }
+
+    public void TianfuAddLevel(int id, int num)
+    {
+        if (TianFuGetLevel(id) + num < 0 || TianFuGetLevel(id) + num > TianFuGetMaxLevel(id))
+        {
+            Debug.LogError("TianFu level is out of range! id = " + id);
+            return;
+        }
+        if(num == -1)
+        {
+            GameData.Inst.TianFuLevel[id]--;
+            GameData.Inst.GlodCoin += TianFuGetCost(id, TianFuGetLevel(id));
+        }
+        else if(num == 1)
+        {
+            GameData.Inst.GlodCoin -= TianFuGetCost(id, TianFuGetLevel(id));
+            GameData.Inst.TianFuLevel[id]++;
+        }
+        else
+        {
+            Debug.LogError("TianFu Add Level Not 1 or -1! id = " + id);
+            return;
+        }
+        GameData.Inst.SavaData();
+    }
 }

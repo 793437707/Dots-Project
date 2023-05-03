@@ -27,6 +27,7 @@ public class GameData
         TotalPlayTime = 0;
         GlodCoin = 0;
         AchievementReceive = new List<bool>();
+        TianFuLevel = new List<int>();
     }
 
     public int MaxPlayTime;
@@ -35,6 +36,7 @@ public class GameData
     public int GlodCoin;
 
     public List<bool> AchievementReceive;
+    public List<int> TianFuLevel;
 
     string path = Application.persistentDataPath + "/GameData.dat";
     //读取数据
@@ -48,9 +50,10 @@ public class GameData
         //读取databases，保证数组长度一致性
         var achiecementSize = GameManager.databasesManager.AchievementGetSize();
         while(AchievementReceive.Count < achiecementSize)
-        {
             AchievementReceive.Add(false);
-        }
+        var tianfuSize = GameManager.databasesManager.TianFuGetSize();
+        while(TianFuLevel.Count < tianfuSize)
+            TianFuLevel.Add(0);
 
     }
     //保存数据

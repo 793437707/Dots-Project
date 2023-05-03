@@ -7350,6 +7350,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   achievement: {fileID: 11400000, guid: 9bdf1217d4ae3524b86e84c2db60d948, type: 2}
+  tianfu: {fileID: 11400000, guid: 454cdbdfb82275e4087fb11e8d32846d, type: 2}
 --- !u!4 &1417330032 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4984980826245493072, guid: 0e5709a7ddb77924090c112cf73bb98a,
