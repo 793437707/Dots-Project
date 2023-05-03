@@ -46,3 +46,19 @@ public class CharacterData
         GetDamage = 100;
     }
 }
+
+public enum CharacterDataEnum
+{
+    MaxHpAdd,
+    MaxHpMul,
+    MaxMpAdd,
+    MaxMpMul,
+    MaxLevel,
+    Damage,
+    PinLv,
+    SheCheng,
+    FlySpeed,
+    Lucky,
+    XiXue,
+    GetDamage,
+}

@@ -10,6 +10,7 @@ public class DatabasesManager : MonoBehaviour
         GameManager.databasesManager = this;
     }
     public AchievementDataBase achievement;
+    public TianFuDataBase tianfu;
 
     public int AchievementGetSize()
     {
