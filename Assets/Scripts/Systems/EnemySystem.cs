@@ -29,7 +29,6 @@ partial class EnemySystem : SystemBase
         characerPos.y = 0;
         //修改血量所需的NativeArray
         NativeArray<int> attack = new NativeArray<int>(1, Allocator.TempJob);
-        var GetDamage = CharacterData.Inst.GetDamage;
 
         Entities
             .ForEach((ref EnemyAspects enemy, in int entityInQueryIndex, in Entity entity) =>
@@ -89,16 +88,17 @@ partial class EnemySystem : SystemBase
             })
             .ScheduleParallel();
 
-        
-
         //修改血量
         Entities
-            .ForEach((ref Character character) =>
+            .WithAll<Character>()
+            .ForEach(() =>
             {
-                character.hp -= attack[0] * GetDamage / 100;
-                character.hp = math.max(0, character.hp);
+                CharacterData.Inst.hp -= attack[0] * CharacterData.Inst.GetDamage / 100;
+                CharacterData.Inst.hp = math.max(0, CharacterData.Inst.hp);
             })
+            .WithoutBurst()
             .Schedule();
+
         //删除NativeArray
         attack.Dispose(Dependency);
         ecbSystem.AddJobHandleForProducer(Dependency);

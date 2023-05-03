@@ -30,13 +30,10 @@ public class UpdatGameState : MonoBehaviour
         if (characterEntity == Entity.Null) return;
 
         //显示血条蓝条
-        Character character = World.DefaultGameObjectInjectionWorld.EntityManager.GetComponentData<Character>(characterEntity);
-        var hpMax = (character.hpMax + CharacterData.Inst.MaxHpAdd) * CharacterData.Inst.MaxHpMul / 100;
-        var mpMax = (character.mpMax + CharacterData.Inst.MaxMpAdd) * CharacterData.Inst.MaxMpMul / 100;
-        HPImage.fillAmount = 1.0f * character.hp / hpMax;
-        MPImage.fillAmount = 1.0f * character.mp / mpMax;
-        HPText.text = $"{character.hp}/{hpMax}";
-        MPText.text = $"{character.mp}/{mpMax}";
+        HPImage.fillAmount = 1.0f * CharacterData.Inst.hp / CharacterData.Inst.hpMax;
+        MPImage.fillAmount = 1.0f * CharacterData.Inst.mp / CharacterData.Inst.mpMax;
+        HPText.text = $"{CharacterData.Inst.hp}/{CharacterData.Inst.hpMax}";
+        MPText.text = $"{CharacterData.Inst.mp}/{CharacterData.Inst.mpMax}";
         //显示游玩时间
         WorldData.Inst.totalSeconds += Time.deltaTime;
         LastTimeText.text = string.Format("{0:D2} : {1:D2}", WorldData.Inst.minute, WorldData.Inst.second);

@@ -17,10 +17,17 @@ public class CharacterData
             return inst;
         }
     }
+    const int InitHp = 100;
+    const int InitMp = 100;
+    public int hp;
+    public int mp;
+    public int level;//没用到
+    public int exp;//没用到
+
     public int MaxHpAdd;
     public int MaxHpMul;
-    public int MaxMpAdd;//没用到
-    public int MaxMpMul;//没用到
+    public int MaxMpAdd;
+    public int MaxMpMul;
     public int MaxLevel;//没用到
     public int Damage;
     public int PinLv;
@@ -30,8 +37,13 @@ public class CharacterData
     public int XiXue;
     public int GetDamage;
 
+    public int hpMax => (MaxHpAdd + InitHp) * MaxHpMul / 100;
+    public int mpMax => (MaxMpAdd + InitMp) * MaxMpMul / 100;
+
     public void Reset()
     {
+        level = 1;
+        exp = 0;
         MaxHpAdd = 0;
         MaxHpMul = 100;
         MaxMpAdd = 0;
@@ -44,6 +56,36 @@ public class CharacterData
         Lucky = 100;
         XiXue = 0;
         GetDamage = 100;
+
+        TianFuDataInit();
+
+        //最后加载被其他初始化影响的数据
+        hp = hpMax;
+        mp = mpMax;
+    }
+
+    public void TianFuDataInit()
+    {
+        for(int i = 0; i < GameManager.databasesManager.TianFuGetSize(); i++) 
+        {
+            var level = GameManager.databasesManager.TianFuGetLevel(i);
+            if(level != 0)
+            {
+                var type = GameManager.databasesManager.tianfu.data[i].type;
+                var value = GameManager.databasesManager.tianfu.data[i].value;
+                AddValueByEnum(type, value * level);
+            }
+        }
+    }
+
+    public int GetValueByEnum(CharacterDataEnum name)
+    {
+        return (int)GetType().GetField(name.ToString()).GetValue(this);
+    }
+
+    public void AddValueByEnum(CharacterDataEnum name, int value)
+    {
+        GetType().GetField(name.ToString()).SetValue(this, GetValueByEnum(name) + value);
     }
 }
 

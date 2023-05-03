@@ -67,6 +67,11 @@ public class GameData
     {
         return (int)GetType().GetField(name.ToString()).GetValue(this);
     }
+
+    public void AddValueByEnum(GameDataEnum name, int value)
+    {
+        GetType().GetField(name.ToString()).SetValue(this, GetValueByEnum(name) + value);
+    }
 }
 
 public enum GameDataEnum

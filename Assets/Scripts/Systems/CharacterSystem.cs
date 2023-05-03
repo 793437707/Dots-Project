@@ -33,9 +33,10 @@ partial class CharacterSystem : SystemBase
             .Schedule();
         //死亡判定，由于死亡后游戏暂停，只会触发一次。
         Entities
-            .ForEach((in Character character) =>
+            .WithAll<Character>()
+            .ForEach(() =>
             {
-                if (character.hp <= 0 && !GameManager.gameManager.GameOver)
+                if(CharacterData.Inst.hp <= 0 && !GameManager.gameManager.GameOver)
                 {
                     GameManager.gameManager.GameDead();
                 }

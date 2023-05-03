@@ -67,24 +67,26 @@ class GameManager : MonoBehaviour
     public void LoadGameScene()
     {
         Debug.Log("Load Game Start");
-        SwitchPause();
-        subSceneEntity = SceneSystem.LoadSceneAsync(World.DefaultGameObjectInjectionWorld.Unmanaged, subScene.SceneGUID);
-        
-        MapManager.MapSeed = 1919191;
-        GameOver = false;
         StartCoroutine(LoadGame());
     }
     IEnumerator LoadGame()
     {
+        //加载数据
+        MapManager.MapSeed = 1919191;
+        GameOver = false;
+        WorldData.Inst.totalSeconds = 0;
+        CharacterData.Inst.Reset();
+
+        SwitchPause();
+
+        //最后加载场景
+        subSceneEntity = SceneSystem.LoadSceneAsync(World.DefaultGameObjectInjectionWorld.Unmanaged, subScene.SceneGUID);
         //等待场景加载完
         yield return new WaitUntil(() => SceneSystem.IsSceneLoaded(World.DefaultGameObjectInjectionWorld.Unmanaged,subSceneEntity));
         yield return null;
-
-        CharacterData.Inst.Reset();
-
+        //生成额外地图
         mapManager.CreateMap();
 
-        WorldData.Inst.totalSeconds = 0;
 
         SwitchPause();
         Debug.Log("Load Game End");

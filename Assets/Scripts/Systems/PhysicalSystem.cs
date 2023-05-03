@@ -64,17 +64,16 @@ partial class PhysicalSystem : SystemBase
         .Schedule(SystemAPI.GetSingleton<SimulationSingleton>(),Dependency);
 
         //吸血
-        var MaxHpAdd = CharacterData.Inst.MaxHpAdd;
-        var MaxHpMul = CharacterData.Inst.MaxHpMul;
-        var XiXue = CharacterData.Inst.XiXue;
         Entities
-            .ForEach((ref Character character) =>
+            .WithAll<Character>()
+            .ForEach(() =>
             {
-                var MaxHp = (character.hpMax + MaxHpAdd) * MaxHpMul / 100;
-                character.hp += damageOut[0] * XiXue / 100;
-                character.hp = math.min(MaxHp, character.hp);
+                CharacterData.Inst.hp += damageOut[0] * CharacterData.Inst.XiXue / 100;
+                CharacterData.Inst.hp = math.min(CharacterData.Inst.hpMax, CharacterData.Inst.hp);
             })
+            .WithoutBurst()
             .Schedule();
+
         //删除NativeArray
         damageOut.Dispose(Dependency);
     }
