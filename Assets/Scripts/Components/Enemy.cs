@@ -6,6 +6,7 @@ using UnityEngine;
 struct Enemy : IComponentData
 {
     public int hp;
+    public int maxHp;
     public int damage;
     public float attackCD;
     public float attackTime;

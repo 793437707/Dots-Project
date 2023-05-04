@@ -24,6 +24,7 @@ class EnemyBaker : Baker<EnemyAuthoring>
         AddComponent(e, new Enemy
         {
             hp = authoring.hp,
+            maxHp = authoring.hp,
             damage = authoring.damage,
             attackCD = authoring.attackCD,
             attackTime = 0,

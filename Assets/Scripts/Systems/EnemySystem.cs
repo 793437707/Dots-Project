@@ -69,7 +69,7 @@ partial class EnemySystem : SystemBase
                     //扣玩家血
                     attack[0] += enemy.enemy.ValueRO.damage;
                 }
-                else if(dis < enemy.enemy.ValueRO.runSize)
+                else if(dis < enemy.enemy.ValueRO.runSize || enemy.enemy.ValueRO.hp < enemy.enemy.ValueRO.maxHp)
                 {
                     newAnimator = EnemyAnimatior.Run;
                     speed = enemy.enemy.ValueRO.runSpeed;
