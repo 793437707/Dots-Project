@@ -19,4 +19,16 @@ MonoBehaviour:
     iconID: 0
     type: 0
     value: 100
+  - title: 
+    des: 
+    cost: 0000000000000000000000000000000000000000
+    iconID: 0
+    type: 0
+    value: 100
+  - title: 
+    des: 
+    cost: 0000000000000000000000000000000000000000
+    iconID: 0
+    type: 0
+    value: 100
   images: []

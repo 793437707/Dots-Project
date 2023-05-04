@@ -85,7 +85,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6608530880189110380}
-  - component: {fileID: 6343170830929559286}
+  - component: {fileID: 7891754913881234957}
   m_Layer: 5
   m_Name: TianFuItem
   m_TagString: Untagged
@@ -118,7 +118,7 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 170}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &6343170830929559286
+--- !u!114 &7891754913881234957
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -127,7 +127,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 4483568187497507321}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4356e8f3169f98d4594f95266f9a9d45, type: 3}
+  m_Script: {fileID: 11500000, guid: 8db9853ee153f8349a86749efc4df345, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &6492677376865135268
@@ -252,7 +252,7 @@ PrefabInstance:
     - target: {fileID: 4028558764640354984, guid: dfd2a276e778d2f4db2252095d1a7326,
         type: 3}
       propertyPath: m_SizeDelta.x
-      value: 600
+      value: 590
       objectReference: {fileID: 0}
     - target: {fileID: 4028558764640354984, guid: dfd2a276e778d2f4db2252095d1a7326,
         type: 3}
@@ -297,7 +297,7 @@ PrefabInstance:
     - target: {fileID: 4028558764640354984, guid: dfd2a276e778d2f4db2252095d1a7326,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 470
+      value: 465
       objectReference: {fileID: 0}
     - target: {fileID: 4028558764640354984, guid: dfd2a276e778d2f4db2252095d1a7326,
         type: 3}
@@ -650,7 +650,7 @@ PrefabInstance:
     - target: {fileID: 4733295698190180980, guid: 13a25d6ca9fe9ae45975d10744e3005f,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 380
+      value: 370
       objectReference: {fileID: 0}
     - target: {fileID: 4733295698190180980, guid: 13a25d6ca9fe9ae45975d10744e3005f,
         type: 3}
