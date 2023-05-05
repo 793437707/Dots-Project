@@ -59,7 +59,7 @@ public class DatabasesManager : MonoBehaviour
 
     public int TianFuGetCost(int id, int level)
     {
-        return tianfu.data[id].cost[level];
+        return tianfu.data[id].cost[level - 1];
     }
 
     public int TianFuGetMaxLevel(int id)
@@ -81,13 +81,13 @@ public class DatabasesManager : MonoBehaviour
         }
         if(num == -1)
         {
-            GameData.Inst.TianFuLevel[id]--;
             GameData.Inst.GlodCoin += TianFuGetCost(id, TianFuGetLevel(id));
+            GameData.Inst.TianFuLevel[id]--;
         }
         else if(num == 1)
         {
-            GameData.Inst.GlodCoin -= TianFuGetCost(id, TianFuGetLevel(id));
             GameData.Inst.TianFuLevel[id]++;
+            GameData.Inst.GlodCoin -= TianFuGetCost(id, TianFuGetLevel(id));
         }
         else
         {
