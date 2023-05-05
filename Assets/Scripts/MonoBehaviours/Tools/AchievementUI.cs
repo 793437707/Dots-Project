@@ -2,6 +2,7 @@
 using System.Collections;
 using UnityEngine;
 using System.Collections.Generic;
+using UnityEngine.UI;
 
 
 public class AchievementUI : MonoBehaviour
@@ -10,12 +11,20 @@ public class AchievementUI : MonoBehaviour
     bool isInit = false;
     Transform Content;
     List<AchievementItem> items = new List<AchievementItem>();
+    Text CoinText;
     Vector3 pos;
+    int coin;
 
     private void Awake()
     {
         Content = transform.Find("Scroll View/Viewport/Content");
         pos = Content.GetComponent<RectTransform>().position;
+        CoinText = transform.Find("CoinItem/cost").GetComponent<Text>();
+    }
+
+    private void LateUpdate()
+    {
+        UpdateCoin();
     }
 
     public void Show()
@@ -36,6 +45,15 @@ public class AchievementUI : MonoBehaviour
         {
             items[i].transform.SetSiblingIndex(i);
         }
+    }
+
+    void UpdateCoin()
+    {
+        if (coin == GameData.Inst.GlodCoin)
+            return;
+        //金币变动，更新显示属性以及能否购买
+        coin = GameData.Inst.GlodCoin;
+        CoinText.text = coin.ToString();
     }
 
     void InitItems()
