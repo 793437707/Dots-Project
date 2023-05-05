@@ -61,6 +61,11 @@ public class TianFuItem : MonoBehaviour
         LevelUpNone.SetActive(level == maxLevel);
         LevelDownCost.text = $"+ {(level != 0 ? GameManager.databasesManager.TianFuGetCost(id, level) : 0)}";
         LevelUpCost.text = $"- {(level != maxLevel ? GameManager.databasesManager.TianFuGetCost(id, level + 1) : 0)}";
+        UpdateColor();
+    }
+
+    public void UpdateColor()
+    {
         LevelUpCost.color = level != maxLevel && GameManager.databasesManager.TianFuGetCost(id, level + 1) > GameData.Inst.GlodCoin ? Color.red : Color.white;
     }
 }

@@ -13,6 +13,7 @@ public class TianFuUI : MonoBehaviour
     List<TianFuItem> items = new List<TianFuItem>();
     Text CoinText;
     Vector3 pos;
+    int coin;
 
     private void Awake()
     {
@@ -23,7 +24,7 @@ public class TianFuUI : MonoBehaviour
 
     private void LateUpdate()
     {
-        CoinText.text = GameData.Inst.GlodCoin.ToString();
+        UpdateCoin();
     }
 
     public void Show()
@@ -38,6 +39,21 @@ public class TianFuUI : MonoBehaviour
             items[i].Init();
         }
         Content.GetComponent<RectTransform>().position = pos;
+        coin = -1;
+        UpdateCoin();
+    }
+
+    void UpdateCoin()
+    {
+        if (coin == GameData.Inst.GlodCoin)
+            return;
+        //金币变动，更新显示属性以及能否购买
+        coin = GameData.Inst.GlodCoin;
+        CoinText.text = coin.ToString();
+        for (int i = 0; i < items.Count; i++)
+        {
+            items[i].UpdateColor();
+        }
     }
 
     void InitItems()

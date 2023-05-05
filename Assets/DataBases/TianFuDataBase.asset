@@ -15,9 +15,89 @@ MonoBehaviour:
   data:
   - title: "\u529B\u91CF"
     des: "\u9020\u6210\u7684\u4F24\u5BB3\u6BCF\u7EA7\u589E\u52A0 10% \uFF08\u6700\u591A+50%\uFF09"
-    cost: 0a000000140000001e0000002800000032000000
+    cost: 0a000000140000001e0000003200000046000000
     iconID: 0
     type: 5
     value: 10
+  - title: "\u53E0\u7532"
+    des: "\u62A4\u7532\u6BCF\u7EA7\u589E\u52A0 5% \uFF08\u6700\u591A+30%\uFF09"
+    cost: 0a000000140000001e000000320000004600000064000000
+    iconID: 2
+    type: 11
+    value: -5
+  - title: "\u5438\u8840"
+    des: "\u653B\u51FB\u56DE\u590D\u751F\u547D\u503C\u6BD4\u4F8B\u6BCF\u7EA7\u589E\u52A0
+      2% \uFF08\u6700\u591A+10%\uFF09"
+    cost: 1e00000032000000460000005a00000078000000
+    iconID: 3
+    type: 10
+    value: 2
+  - title: "\u989D\u5916\u751F\u547D"
+    des: "\u6700\u5927\u751F\u547D\u503C\u6BCF\u7EA7\u589E\u52A0 50 \uFF08\u6700\u591A+150\uFF09"
+    cost: 280000004600000078000000
+    iconID: 7
+    type: 0
+    value: 50
+  - title: "\u989D\u5916\u9B54\u529B"
+    des: "\u6700\u5927\u9B54\u6CD5\u6BCF\u7EA7\u589E\u52A0 50 \uFF08\u6700\u591A+150\uFF09"
+    cost: 280000004600000078000000
+    iconID: 9
+    type: 2
+    value: 50
+  - title: "\u66F4\u591A\u751F\u547D"
+    des: "\u6700\u5927\u751F\u547D\u503C\u6BCF\u7EA7\u589E\u52A0 50% \uFF08\u6700\u591A+100%\uFF09"
+    cost: 5a000000c8000000
+    iconID: 8
+    type: 1
+    value: 50
+  - title: "\u66F4\u591A\u9B54\u529B"
+    des: "\u6700\u5927\u9B54\u6CD5\u6BCF\u7EA7\u589E\u52A0 50% \uFF08\u6700\u591A+100%\uFF09"
+    cost: 5a000000c8000000
+    iconID: 10
+    type: 3
+    value: 50
+  - title: "\u7C92\u5B50\u52A0\u901F"
+    des: "\u6CD5\u7403\u7684\u79FB\u52A8\u901F\u5EA6\u6BCF\u7EA7\u589E\u52A0 10%
+      \uFF08\u6700\u591A+30%\uFF09"
+    cost: 140000001e00000032000000
+    iconID: 4
+    type: 10
+    value: 2
+  - title: "\u65BD\u6CD5\u52A0\u901F"
+    des: "\u6CD5\u7403\u7684\u751F\u6210\u6BCF\u7EA7\u51CF\u5C11 5% \uFF08\u6700\u591A+30%\uFF09"
+    cost: 0f00000019000000280000003c000000500000006e000000
+    iconID: 5
+    type: 6
+    value: -5
+  - title: "\u98DE\u5F97\u66F4\u8FDC"
+    des: "\u6CD5\u7403\u7684\u98DE\u884C\u8DDD\u79BB\u6BCF\u7EA7\u589E\u52A0 15%
+      \uFF08\u6700\u591A+60%\uFF09"
+    cost: 1e00000032000000460000005a000000
+    iconID: 6
+    type: 7
+    value: 15
+  - title: "\u5E78\u8FD0\u56DB\u53F6\u8349"
+    des: "\u5E78\u8FD0\u6BCF\u7EA7\u589E\u52A0 20% \uFF08\u6700\u591A+100%\uFF09"
+    cost: 0a000000140000001e0000003200000046000000
+    iconID: 1
+    type: 9
+    value: 20
+  - title: "\u7A81\u7834\u4E0A\u9650"
+    des: "\u6700\u5927\u7B49\u7EA7\u6BCF\u7EA7\u589E\u52A0 5 \uFF08\u6700\u591A+20\uFF09"
+    cost: 280000005a00000096000000c8000000
+    iconID: 11
+    type: 4
+    value: 5
   images:
   - {fileID: 21300000, guid: 540cfa3f44d95574fb6fe4e164d0f3a9, type: 3}
+  - {fileID: 21300000, guid: 0b5d755eb91897d4eb38385c4521bde0, type: 3}
+  - {fileID: 21300000, guid: d61545681e4f2b04ebb9073149d44d45, type: 3}
+  - {fileID: 21300000, guid: 131ede7ef95c2f84c9a6b05e2f1bf632, type: 3}
+  - {fileID: 21300000, guid: 5e45f285761b5c74fbfc5ca74aa3cb79, type: 3}
+  - {fileID: 21300000, guid: 7380cd877657cc249bdb3d6d2519d946, type: 3}
+  - {fileID: 21300000, guid: a9514fe158c95ec43a5ab6929d5f2afb, type: 3}
+  - {fileID: 21300000, guid: ab74dd01bc553544b9d39485599b2be1, type: 3}
+  - {fileID: 21300000, guid: 9f7d725ca364960429d72c0509132bb1, type: 3}
+  - {fileID: 21300000, guid: 8af03829c6633f049b60afad93a4fb0e, type: 3}
+  - {fileID: 21300000, guid: a385726383ad6294fbf0d26d93e12b0d, type: 3}
+  - {fileID: 21300000, guid: 8f03d68852f207746b6e4667a67d399f, type: 3}
