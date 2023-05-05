@@ -12,6 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a82532eee64d01d40be64eacff00fad9, type: 3}
   m_Name: TianFuDataBase
   m_EditorClassIdentifier: 
-  data: []
+  data:
+  - title: "\u529B\u91CF"
+    des: "\u9020\u6210\u7684\u4F24\u5BB3\u6BCF\u7EA7\u589E\u52A0 10% \uFF08\u6700\u591A+50%\uFF09"
+    cost: 0a000000140000001e0000002800000032000000
+    iconID: 0
+    type: 5
+    value: 10
   images:
-  - {fileID: 0}
+  - {fileID: 21300000, guid: 540cfa3f44d95574fb6fe4e164d0f3a9, type: 3}
