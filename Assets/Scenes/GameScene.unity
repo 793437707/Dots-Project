@@ -7320,23 +7320,16 @@ MonoBehaviour:
   goPlane: {fileID: 4153305055615123867, guid: 4d43a74b2b8cabc46b19750865a54cff, type: 3}
   planeMaterials:
   - {fileID: 2100000, guid: c07fd5a279df25b409a2d3b43a6fd36c, type: 2}
-  - {fileID: 2100000, guid: 2c37f80691e63be45969ff6a3b622f86, type: 2}
   - {fileID: 2100000, guid: 8a7c768e8a0c19f48adc139e5ec9f872, type: 2}
   - {fileID: 2100000, guid: 70ca29fd99b70be42886f22185153a1e, type: 2}
   - {fileID: 2100000, guid: bcb4ef312e2f2794fa86e89a61bbf093, type: 2}
   - {fileID: 2100000, guid: 4fa406342e8e64d468aaaace63b957a1, type: 2}
   - {fileID: 2100000, guid: 113abde73d8279a4b993f5ec386da1c0, type: 2}
-  - {fileID: 2100000, guid: 14877d4df82436f4ab7d665c50630ff6, type: 2}
-  - {fileID: 2100000, guid: ae3bda47d3ee3794bb1290f8e388b469, type: 2}
   - {fileID: 2100000, guid: 51cce20b647577c48920ecd3fa468ec6, type: 2}
-  - {fileID: 2100000, guid: 0123b3947415566439e08f4c685f69d3, type: 2}
   - {fileID: 2100000, guid: fa5557e6cf871ae4b8426c5e3e20062f, type: 2}
   - {fileID: 2100000, guid: 78e66a395c8f02e4a96337a5ff72a37b, type: 2}
-  - {fileID: 2100000, guid: 2cd1d731a42c03649ae3274765b82a40, type: 2}
   - {fileID: 2100000, guid: 461bb02e51513814abaa5408e36a368c, type: 2}
-  - {fileID: 2100000, guid: 48f041cea6e8ffc4daba48842e7739ae, type: 2}
   - {fileID: 2100000, guid: 50cbaf0312d84914cbebeb0e8be0d75a, type: 2}
-  - {fileID: 2100000, guid: 7cb8b58a2e14e3d47b67fe0295935dc8, type: 2}
 --- !u!114 &1412220503
 MonoBehaviour:
   m_ObjectHideFlags: 0
