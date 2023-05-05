@@ -3031,6 +3031,32 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2845660534175128238, guid: fc4eb5e93461798429e0fdc9653286bb,
+        type: 3}
+      propertyPath: m_Type
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2845660534175128238, guid: fc4eb5e93461798429e0fdc9653286bb,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: b8ab5e7855c8d3641af524ad165b5bcf,
+        type: 3}
+    - target: {fileID: 2845660534175128238, guid: fc4eb5e93461798429e0fdc9653286bb,
+        type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2845660534175128238, guid: fc4eb5e93461798429e0fdc9653286bb,
+        type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2845660534175128238, guid: fc4eb5e93461798429e0fdc9653286bb,
+        type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4395500004108884905, guid: fc4eb5e93461798429e0fdc9653286bb,
         type: 3}
       propertyPath: m_Text
