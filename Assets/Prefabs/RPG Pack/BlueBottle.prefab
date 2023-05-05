@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 4000012102853034}
   - component: {fileID: 33000011564412998}
   - component: {fileID: 23000010119388918}
-  - component: {fileID: 95000010596400782}
   m_Layer: 0
   m_Name: bottle_blue
   m_TagString: Untagged
@@ -85,27 +84,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!95 &95000010596400782
-Animator:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1000011052568322}
-  m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: da8a393ba24fc6f49842d87b0937b84d, type: 3}
-  m_Controller: {fileID: 9100000, guid: 972a6bb97057f2644a0b8ce0a4b89e68, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1000012264061876
 GameObject:
   m_ObjectHideFlags: 0
@@ -4965,8 +4943,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1000013317980782}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.51, y: 0, z: 0}
+  m_LocalRotation: {x: 0, y: 0.015969051, z: 0, w: 0.9998725}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -4974,7 +4952,7 @@ Transform:
   - {fileID: 4000012798377608}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 1.83, z: 0}
 --- !u!1 &1000013970829164
 GameObject:
   m_ObjectHideFlags: 0
