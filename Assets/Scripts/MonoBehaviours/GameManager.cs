@@ -80,26 +80,38 @@ class GameManager : MonoBehaviour
         SwitchPause();
 
         //最后加载场景
+        uIManager.SetLoadingText("加载地图中...");
         subSceneEntity = SceneSystem.LoadSceneAsync(World.DefaultGameObjectInjectionWorld.Unmanaged, subScene.SceneGUID);
         //等待场景加载完
         yield return new WaitUntil(() => SceneSystem.IsSceneLoaded(World.DefaultGameObjectInjectionWorld.Unmanaged,subSceneEntity));
         yield return null;
         //生成额外地图
+        uIManager.SetLoadingText("生成地图中...");
         mapManager.CreateMap();
 
 
         SwitchPause();
+        yield return null;
+        uIManager.LoadingToGame();
         Debug.Log("Load Game End");
     }
 
     public void UnloadGameScene()
     {
         Debug.Log("Unload Game Start");
-        SwitchPause();
-        SceneSystem.UnloadScene(World.DefaultGameObjectInjectionWorld.Unmanaged, subSceneEntity);
-        SwitchPause();
-        Debug.Log("Unload Game End");
+        StartCoroutine(UnloadGame());
+    }
 
+    IEnumerator UnloadGame()
+    {
+        SwitchPause();
+        uIManager.SetLoadingText("保存游戏中...");
+        SceneSystem.UnloadScene(World.DefaultGameObjectInjectionWorld.Unmanaged, subSceneEntity);
+        yield return new WaitForSecondsRealtime(0.3f);
+        yield return null;
+        SwitchPause();
+        uIManager.LoadingToMain();
+        Debug.Log("Unload Game End");
     }
     public void SwitchPause()
     {

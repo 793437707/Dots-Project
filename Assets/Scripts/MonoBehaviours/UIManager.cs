@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
@@ -15,6 +16,8 @@ public class UIManager : MonoBehaviour
         Game = transform.Find("Game").gameObject;
         Dead = transform.Find("Dead").gameObject;
 
+        LoadingText = Loading.transform.Find("Loading").GetComponent<Text>();
+
         Main.SetActive(true);
         Setting.SetActive(false);
         Loading.SetActive(false);
@@ -22,10 +25,17 @@ public class UIManager : MonoBehaviour
         Dead.SetActive(false);
     }
 
+    Text LoadingText;
+    public void SetLoadingText(string text)
+    {
+        LoadingText.text = text;
+    }
+
     public void StartGame()
     {
         GameManager.gameManager.LoadGameScene();
     }
+
 
     public void ExitGameInMain()
     {
@@ -42,6 +52,7 @@ public class UIManager : MonoBehaviour
         GameManager.gameManager.UnloadGameScene();
     }
 
+
     public void SwitchPauseInGame()
     {
         GameManager.gameManager.SwitchPause();
@@ -56,5 +67,15 @@ public class UIManager : MonoBehaviour
     {
         Game.transform.Find("SettingBtn").gameObject.SetActive(false);
         Dead.SetActive(true);
+    }
+    public void LoadingToGame()
+    {
+        Loading.SetActive(false);
+        Game.SetActive(true);
+    }
+    public void LoadingToMain()
+    {
+        Loading.SetActive(false);
+        Main.SetActive(true);
     }
 }
