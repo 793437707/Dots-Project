@@ -40,6 +40,9 @@ public class CharacterData
     public int hpMax => (MaxHpAdd + InitHp) * MaxHpMul / 100;
     public int mpMax => (MaxMpAdd + InitMp) * MaxMpMul / 100;
 
+    public int hpAdd { set { hp = Mathf.Max(0, Mathf.Min(hpMax, hp + value)); } }
+    public int mpAdd { set { mp = Mathf.Max(0, Mathf.Min(mpMax, mp + value)); } }
+
     public void Reset()
     {
         level = 1;
@@ -103,4 +106,17 @@ public enum CharacterDataEnum
     Lucky,
     XiXue,
     GetDamage,
+}
+
+public enum CharacterAddDataEnum
+{
+    Damage,
+    PinLv,
+    SheCheng,
+    FlySpeed,
+    Lucky,
+    XiXue,
+    GetDamage,
+    hpAdd,
+    mpAdd
 }
