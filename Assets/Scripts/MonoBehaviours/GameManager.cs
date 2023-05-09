@@ -120,11 +120,10 @@ class GameManager : MonoBehaviour
     {
         SwitchPause();
         uIManager.SetLoadingText("±£¥Ê”Œœ∑÷–...");
+        EntityForTagDictionary.Clear();
         SceneSystem.UnloadScene(World.DefaultGameObjectInjectionWorld.Unmanaged, subSceneEntity);
         yield return new WaitForSecondsRealtime(0.3f);
         yield return null;
-
-        EntityForTagDictionary.Clear();
 
         SwitchPause();
         uIManager.LoadingToMain();
