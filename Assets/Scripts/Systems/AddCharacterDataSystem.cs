@@ -3,6 +3,7 @@ using Unity.Burst;
 using Unity.Collections;
 using Unity.Entities;
 using Unity.Mathematics;
+using Unity.Physics;
 using Unity.Transforms;
 using UnityEngine;
 
@@ -45,7 +46,22 @@ partial class AddCharacterDataSystem : SystemBase
                     ecb.AddComponent(entityInQueryIndex, entity, new AutoDestory { destoryTime = -1 });
             })
             .WithoutBurst()
-            .Schedule();
+            .ScheduleParallel();
+
+        Entities
+            .WithNone<AutoDestory>()
+            .ForEach((in Box box, in int entityInQueryIndex, in Entity entity) =>
+            {
+                if (box.hp > 0)
+                    return;
+                ecb.AddComponent(entityInQueryIndex, entity, new AutoDestory { destoryTime = 2 });
+                ecb.SetComponent(entityInQueryIndex, entity, new PhysicsVelocity
+                {
+                    Linear = new float3(0, -2, 0)
+                });
+
+            })
+            .ScheduleParallel();
         ecbSystem.AddJobHandleForProducer(Dependency);
     }
 }

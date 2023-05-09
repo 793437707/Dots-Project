@@ -21,6 +21,7 @@ partial class PhysicalSystem : SystemBase
         public ComponentLookup<Bullet> bulletData;
         public ComponentLookup<Enemy> enemyData;
         public ComponentLookup<LocalTransform> localTransformData;
+        public ComponentLookup<Box> boxData;
         public int Damage;
         [WriteOnly]
         public NativeArray<int> damageOut;
@@ -45,6 +46,13 @@ partial class PhysicalSystem : SystemBase
                 enemy.hp -= bulletData[a].damage * Damage / 100;
                 enemyData[b] = enemy;
             }
+            //子弹射击箱子
+            if (boxData.HasComponent(b))
+            {
+                Box box = boxData[b];
+                box.hp -= 1;
+                boxData[b] = box;
+            }
         }
     }
 
@@ -58,6 +66,7 @@ partial class PhysicalSystem : SystemBase
             bulletData = GetComponentLookup<Bullet>(),
             enemyData = GetComponentLookup<Enemy>(),
             localTransformData = GetComponentLookup<LocalTransform>(),
+            boxData = GetComponentLookup<Box>(),
             Damage = CharacterData.Inst.Damage,
             damageOut = damageOut
         }

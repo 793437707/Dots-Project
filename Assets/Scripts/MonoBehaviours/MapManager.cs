@@ -69,6 +69,7 @@ public class MapManager : MonoBehaviour
                 entityManager.SetComponentData(plane, meshInfo);
 
                 //生成世界装饰
+                //奖励箱
                 if(random.NextInt(0,100) < 30)
                 {
                     Entity box = entityManager.Instantiate(BoxPrefab);
