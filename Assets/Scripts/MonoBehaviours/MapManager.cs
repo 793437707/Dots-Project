@@ -38,11 +38,13 @@ public class MapManager : MonoBehaviour
 
     public void CreatPlantMap()
     {
-        Entity parent = GameManager.GetEntityForTag("Plane");
+        Entity planeParent = GameManager.GetEntityForTag("Plane");
         Entity planePrefab = GameManager.GetEntityForTag("PlanePrefab");
-        if (parent == Entity.Null || planePrefab == Entity.Null)
+        Entity boxParent = GameManager.GetEntityForTag("Box");
+        Entity BoxPrefab = GameManager.GetEntityForTag("BoxPrefab");
+        if (planeParent == Entity.Null || planePrefab == Entity.Null || BoxPrefab == Entity.Null || boxParent == Entity.Null)
         {
-            Debug.LogError("None Prefab For Plane / PlanePrefab");
+            Debug.LogError("None Prefab For CreatPlanMap");
             return;
         }
         
@@ -56,7 +58,8 @@ public class MapManager : MonoBehaviour
             {
                 //生成实体
                 Entity plane = entityManager.Instantiate(planePrefab);
-                entityManager.AddComponentData(plane, new Parent { Value = parent });
+ 
+                entityManager.AddComponentData(plane, new Parent { Value = planeParent });
                 //修改坐标
                 entityManager.SetComponentData(plane, LocalTransform.FromPosition(new float3(posx, 0, posz)));
                 //修改材质  目前是随机
@@ -64,6 +67,20 @@ public class MapManager : MonoBehaviour
                 MaterialMeshInfo meshInfo = entityManager.GetComponentData<MaterialMeshInfo>(plane);
                 meshInfo.Material = planeMaterialsID[index];
                 entityManager.SetComponentData(plane, meshInfo);
+
+                //生成世界装饰
+                if(random.NextInt(0,100) < 30)
+                {
+                    Entity box = entityManager.Instantiate(BoxPrefab);
+                    entityManager.AddComponentData(box, new Parent { Value = boxParent });
+                    LocalTransform transform = entityManager.GetComponentData<LocalTransform>(box);
+                    transform.Position.x = posx + (planeSize.x / 2 - 2) * random.NextFloat() * (random.NextBool() ? 1 : -1);
+                    transform.Position.y = 0;
+                    transform.Position.z = posz + (planeSize.y / 2 - 2) * random.NextFloat() * (random.NextBool() ? 1 : -1);
+                    transform.Rotation.value = quaternion.RotateY(random.NextFloat() * 360).value;
+                    entityManager.SetComponentData(box, transform);
+                }
+
 
                 posz -= planeSize.y;
             }

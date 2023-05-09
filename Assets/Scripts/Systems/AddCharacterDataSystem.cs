@@ -45,7 +45,7 @@ partial class AddCharacterDataSystem : SystemBase
                     ecb.AddComponent(entityInQueryIndex, entity, new AutoDestory { destoryTime = -1 });
             })
             .WithoutBurst()
-            .ScheduleParallel();
+            .Schedule();
         ecbSystem.AddJobHandleForProducer(Dependency);
     }
 }

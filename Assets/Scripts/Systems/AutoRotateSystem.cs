@@ -14,7 +14,7 @@ partial class AutoRotateSystem : SystemBase
         Entities
             .ForEach((ref LocalTransform localTransform, in AutoRotate spin) =>
             {
-                localTransform.Rotate(quaternion.AxisAngle(
+                localTransform = localTransform.Rotate(quaternion.AxisAngle(
                     spin.RotationAxis,
                     math.radians(spin.RotationSpeed * deltaTime)
                 ));
