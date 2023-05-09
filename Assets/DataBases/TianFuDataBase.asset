@@ -61,8 +61,8 @@ MonoBehaviour:
       \uFF08\u6700\u591A+30%\uFF09"
     cost: 140000001e00000032000000
     iconID: 4
-    type: 10
-    value: 2
+    type: 8
+    value: 10
   - title: "\u65BD\u6CD5\u52A0\u901F"
     des: "\u6CD5\u7403\u7684\u751F\u6210\u6BCF\u7EA7\u51CF\u5C11 5% \uFF08\u6700\u591A+30%\uFF09"
     cost: 0f00000019000000280000003c000000500000006e000000

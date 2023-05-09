@@ -40,8 +40,10 @@ public class CharacterData
     public int hpMax => (MaxHpAdd + InitHp) * MaxHpMul / 100;
     public int mpMax => (MaxMpAdd + InitMp) * MaxMpMul / 100;
 
-    public int hpAdd { set { hp = Mathf.Max(0, Mathf.Min(hpMax, hp + value)); } }
-    public int mpAdd { set { mp = Mathf.Max(0, Mathf.Min(mpMax, mp + value)); } }
+    public int hpAdd { get { return 0; } set { hp = Mathf.Max(0, Mathf.Min(hpMax, hp + value)); } }
+    public int mpAdd { get { return 0; } set { mp = Mathf.Max(0, Mathf.Min(mpMax, mp + value)); } }
+
+    public int coinAdd { get { return 0; } set { GameData.Inst.AddValueByEnum(GameDataEnum.GlodCoin, value); } }
 
     public void Reset()
     {
@@ -93,12 +95,17 @@ public class CharacterData
 
     public int GetValueByAddEnum(CharacterAddDataEnum name)
     {
+        if (GetType().GetField(name.ToString()) == null)
+            return (int)GetType().GetProperty(name.ToString()).GetValue(this);
         return (int)GetType().GetField(name.ToString()).GetValue(this);
     }
 
     public void AddValueByAddEnum(CharacterAddDataEnum name, int value)
     {
-        GetType().GetField(name.ToString()).SetValue(this, GetValueByAddEnum(name) + value);
+        if (GetType().GetField(name.ToString()) == null)
+            GetType().GetProperty(name.ToString()).SetValue(this, GetValueByAddEnum(name) + value);
+        else
+            GetType().GetField(name.ToString()).SetValue(this, GetValueByAddEnum(name) + value);
     }
 }
 
@@ -128,5 +135,6 @@ public enum CharacterAddDataEnum
     XiXue,
     GetDamage,
     hpAdd,
-    mpAdd
+    mpAdd,
+    coinAdd
 }

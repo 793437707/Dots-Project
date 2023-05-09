@@ -14,7 +14,8 @@ class BoxBaker : Baker<BoxAuthoring>
         var e = GetEntity(authoring, TransformUsageFlags.Dynamic);
         AddComponent(e, new Box
         {
-            hp = authoring.hp
+            hp = authoring.hp,
+            spawnEntity = Entity.Null
         });
     }
 }

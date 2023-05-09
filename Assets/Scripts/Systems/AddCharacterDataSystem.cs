@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using System.Numerics;
 using Unity.Burst;
 using Unity.Collections;
 using Unity.Entities;
@@ -25,6 +26,7 @@ partial class AddCharacterDataSystem : SystemBase
         Entity character = GameManager.GetEntityForTag("Character");
         float3 characerPos = character == Entity.Null ? float3.zero : EntityManager.GetComponentData<LocalToWorld>(character).Position;
         characerPos.y = 0;
+        Entity boxParent = GameManager.GetEntityForTag("Box");
 
         Entities
             .ForEach((ref AddCharacterData data, in LocalToWorld transform, in int entityInQueryIndex, in Entity entity) =>
@@ -50,7 +52,7 @@ partial class AddCharacterDataSystem : SystemBase
 
         Entities
             .WithNone<AutoDestory>()
-            .ForEach((in Box box, in int entityInQueryIndex, in Entity entity) =>
+            .ForEach((in Box box, in LocalTransform transform, in int entityInQueryIndex, in Entity entity) =>
             {
                 if (box.hp > 0)
                     return;
@@ -59,7 +61,13 @@ partial class AddCharacterDataSystem : SystemBase
                 {
                     Linear = new float3(0, -2, 0)
                 });
-
+                if(box.spawnEntity != Entity.Null)
+                {
+                    Entity spawnEntity = ecb.Instantiate(entityInQueryIndex, box.spawnEntity);
+                    ecb.AddComponent(entityInQueryIndex, spawnEntity, new Parent { Value = boxParent });
+                    ecb.SetComponent(entityInQueryIndex, spawnEntity, LocalTransform.FromPosition(transform.Position));
+                }
+                    
             })
             .ScheduleParallel();
         ecbSystem.AddJobHandleForProducer(Dependency);

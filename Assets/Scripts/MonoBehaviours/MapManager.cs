@@ -47,6 +47,12 @@ public class MapManager : MonoBehaviour
             Debug.LogError("None Prefab For CreatPlanMap");
             return;
         }
+
+        //BOX ENTITY
+        Entity BoxHp = GameManager.GetEntityForTag("BoxHp");
+        Entity BoxMp = GameManager.GetEntityForTag("BoxMp");
+        Entity BoxCoin = GameManager.GetEntityForTag("BoxCoin");
+
         
         random = new Unity.Mathematics.Random(MapSeed);
 
@@ -70,7 +76,7 @@ public class MapManager : MonoBehaviour
 
                 //生成世界装饰
                 //奖励箱
-                if(random.NextInt(0,100) < 30)
+                if(random.NextInt(0, 100) < 30)
                 {
                     Entity box = entityManager.Instantiate(BoxPrefab);
                     entityManager.AddComponentData(box, new Parent { Value = boxParent });
@@ -80,6 +86,19 @@ public class MapManager : MonoBehaviour
                     transform.Position.z = posz + (planeSize.y / 2 - 2) * random.NextFloat() * (random.NextBool() ? 1 : -1);
                     transform.Rotation.value = quaternion.RotateY(random.NextFloat() * 360).value;
                     entityManager.SetComponentData(box, transform);
+
+                    //设置箱子里爆出来的物品
+                    Box boxBox = entityManager.GetComponentData<Box>(box);
+                    int boxRandomPrefab = random.NextInt(0, 100);
+                    if (boxRandomPrefab < 50)
+                        boxBox.spawnEntity = BoxHp;
+                    else if(boxRandomPrefab < 80)
+                        boxBox.spawnEntity = BoxMp;
+                    else if (boxRandomPrefab < 90)
+                        boxBox.spawnEntity = BoxCoin;
+                    else //爆的技能，先用coin代替
+                        boxBox.spawnEntity = BoxCoin;
+                    entityManager.SetComponentData(box, boxBox);
                 }
 
 

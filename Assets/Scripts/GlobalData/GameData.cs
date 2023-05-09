@@ -71,6 +71,7 @@ public class GameData
     public void AddValueByEnum(GameDataEnum name, int value)
     {
         GetType().GetField(name.ToString()).SetValue(this, GetValueByEnum(name) + value);
+        SavaData();
     }
 }
 

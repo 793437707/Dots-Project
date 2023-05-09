@@ -10,6 +10,10 @@ GameObject:
   m_Component:
   - component: {fileID: 4000013555364002}
   - component: {fileID: 8089629724314289672}
+  - component: {fileID: 3552790164546214260}
+  - component: {fileID: 1861793699789742877}
+  - component: {fileID: 504095589143885865}
+  - component: {fileID: 5141458027558394550}
   m_Layer: 0
   m_Name: Coin
   m_TagString: Untagged
@@ -24,7 +28,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1000011365394840}
-  m_LocalRotation: {x: -0, y: 0.49642566, z: -0, w: 0.8680793}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -32,7 +36,7 @@ Transform:
   - {fileID: 4000010444600384}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 59.492004, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &8089629724314289672
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -176,6 +180,67 @@ MonoBehaviour:
         Tag07: 0
     m_SerializedVersion: 1
   m_SerializedVersion: 1
+--- !u!114 &3552790164546214260
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1000011365394840}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c16549610bfe4458aa9389201d072bb6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1861793699789742877
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1000011365394840}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5e1c385eb8008994ca385074128a8fc8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TAG: BoxCoin
+--- !u!114 &504095589143885865
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1000011365394840}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 508fff320e3c7b14fab62f2cb9f6b186, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  RotationAxis:
+    x: 0
+    y: 1
+    z: 0
+  RotationSpeed: 60
+--- !u!114 &5141458027558394550
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1000011365394840}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f412b912b0300574e9addbe534867b3c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  type: 9
+  value: 10
+  AddCD: -1
+  nextAddTime: 10000
+  AddOnce: 1
+  minDis: 1.5
+  infDis: 0
 --- !u!1 &1000013760068644
 GameObject:
   m_ObjectHideFlags: 0
