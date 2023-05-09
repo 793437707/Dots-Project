@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using Unity.Collections;
 using Unity.Entities;
 using Unity.Scenes;
@@ -25,6 +26,8 @@ class GameManager : MonoBehaviour
     public static GameManager gameManager;
     public static DatabasesManager databasesManager;
 
+    public static Dictionary<FixedString64Bytes, Entity> EntityForTagDictionary;
+
     public bool GameOver = false;
 
     private bool isPause = false;
@@ -37,6 +40,7 @@ class GameManager : MonoBehaviour
 
         entityManager = World.DefaultGameObjectInjectionWorld.EntityManager;
         tagQuery = entityManager.CreateEntityQuery(ComponentType.ReadOnly<Tag>());
+        EntityForTagDictionary = new Dictionary<FixedString64Bytes, Entity>();
     }
 
     private void Start()
@@ -52,16 +56,21 @@ class GameManager : MonoBehaviour
 
     public static Entity GetEntityForTag(string name = "Root")
     {
+        //缓存中存在
+        if(EntityForTagDictionary.ContainsKey(name))
+            return EntityForTagDictionary[name];
+        return Entity.Null;
+    }
+
+    public void InitEntityForTagDictionary()
+    {
         var entities = tagQuery.ToEntityArray(Allocator.TempJob);
-        Entity entity = Entity.Null;
-        for(int i = 0; i < entities.Length; i ++)
+        for (int i = 0; i < entities.Length; i++)
         {
             var tag = entityManager.GetComponentData<Tag>(entities[i]);
-            if (tag.tag == name)
-                entity = entities[i];
+            EntityForTagDictionary.Add(tag.tag, entities[i]);
         }
         entities.Dispose();
-        return entity;
     }
 
     public void LoadGameScene()
@@ -85,6 +94,11 @@ class GameManager : MonoBehaviour
         //等待场景加载完
         yield return new WaitUntil(() => SceneSystem.IsSceneLoaded(World.DefaultGameObjectInjectionWorld.Unmanaged,subSceneEntity));
         yield return null;
+
+        yield return null;
+        InitEntityForTagDictionary();
+        yield return null;
+
         //生成额外地图
         uIManager.SetLoadingText("生成地图中...");
         mapManager.CreateMap();
@@ -109,6 +123,9 @@ class GameManager : MonoBehaviour
         SceneSystem.UnloadScene(World.DefaultGameObjectInjectionWorld.Unmanaged, subSceneEntity);
         yield return new WaitForSecondsRealtime(0.3f);
         yield return null;
+
+        EntityForTagDictionary.Clear();
+
         SwitchPause();
         uIManager.LoadingToMain();
         Debug.Log("Unload Game End");
