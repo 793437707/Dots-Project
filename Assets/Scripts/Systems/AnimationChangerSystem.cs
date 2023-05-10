@@ -24,19 +24,21 @@ partial class AnimationChangerSystem : SystemBase
             })
             .Schedule();
         Entities
-            .ForEach((ref Enemy enemy, ref AnimationCmdData cmd, in AnimationStateData state) =>
+            .ForEach((ref Enemy enemy, ref AnimationCmdData cmd, ref MaterialAnimationSpeed speed, in AnimationStateData state) =>
             {
                 switch(enemy.animatior)
                 {
                     case EnemyAnimatior.AttackFirst:
                         cmd.cmd = AnimationCmd.PlayOnce;
                         cmd.clipIndex = (byte)AnimDb.Zombie.Z_Attack;
+                        speed.multiplier = 1f;
                         break;
                     case EnemyAnimatior.Run:
                         if(state.foreverClipIndex != (byte)AnimDb.Zombie.Z_Run_InPlace)
                         {
                             cmd.cmd = AnimationCmd.SetPlayForever;
                             cmd.clipIndex = (byte)AnimDb.Zombie.Z_Run_InPlace;
+                            speed.multiplier = 1f;
                         }
                         break;
                     case EnemyAnimatior.Walk:
@@ -44,6 +46,7 @@ partial class AnimationChangerSystem : SystemBase
                         {
                             cmd.cmd = AnimationCmd.SetPlayForever;
                             cmd.clipIndex = (byte)AnimDb.Zombie.Z_Walk_InPlace;
+                            speed.multiplier = 2.5f;
                         }
                         break;
                     case EnemyAnimatior.Idle:
@@ -51,12 +54,14 @@ partial class AnimationChangerSystem : SystemBase
                         {
                             cmd.cmd = AnimationCmd.SetPlayForever;
                             cmd.clipIndex = (byte)AnimDb.Zombie.Z_Idle;
+                            speed.multiplier = 2f;
                         }
                         break;
                     case EnemyAnimatior.DeadFirst:
                         enemy.animatior = EnemyAnimatior.Dead;
                         cmd.cmd = AnimationCmd.PlayOnceAndStop;
                         cmd.clipIndex = (byte)AnimDb.Zombie.Z_FallingBack;
+                        speed.multiplier = 1f;
                         break;
                 }
             })
