@@ -13,7 +13,7 @@ partial class SpawnEnemySystem : SystemBase
     private const float maxSize = 70;
     private const float minSize = 30;
     private static float spawnCD = 0.2f;
-    private static float spawnTimer = 3f;
+    private static float spawnTimer = 0f;
     private static Random random;
     protected override void OnCreate()
     {
