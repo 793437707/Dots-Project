@@ -15,6 +15,8 @@ struct Enemy : IComponentData
     public float runSpeed;
     public float walkSize;
     public float walkSpeed;
+    public float maxSizeForDead;
+    public float maxSizeWalkSpeed;
     public float deadStayTime;
     public EnemyAnimatior animatior;
     public EnemyMobs mob;

@@ -315,10 +315,12 @@ MonoBehaviour:
   hp: 30
   damage: 10
   attackCD: 0.9
-  attackSize: 2
+  attackSize: 4.5
   runSize: 10
   runSpeed: 7
-  walkSize: 25
+  walkSize: 30
   walkSpeed: 2
+  maxSizeForDead: 100
+  maxSizeWalkSpeed: 2
   deadStayTime: 5
   mob: 0

@@ -31,6 +31,7 @@ partial class EnemySystem : SystemBase
         NativeArray<int> attack = new NativeArray<int>(1, Allocator.TempJob);
 
         Entities
+            .WithNone<AutoDestory>()
             .ForEach((ref EnemyAspects enemy, in int entityInQueryIndex, in Entity entity) =>
             {
                 if(enemy.enemy.ValueRO.hp <= 0)
@@ -78,6 +79,15 @@ partial class EnemySystem : SystemBase
                 {
                     newAnimator = EnemyAnimatior.Walk;
                     speed = enemy.enemy.ValueRO.walkSpeed;
+                }
+                else if(dis <enemy.enemy.ValueRO.maxSizeForDead)
+                {
+                    newAnimator = EnemyAnimatior.Walk;
+                    speed = enemy.enemy.ValueRO.maxSizeWalkSpeed;
+                }
+                else
+                {
+                    ecb.AddComponent(entityInQueryIndex, entity, new AutoDestory { destoryTime = -1 });
                 }
                 //修改动画标识
                 enemy.enemy.ValueRW.animatior = newAnimator;

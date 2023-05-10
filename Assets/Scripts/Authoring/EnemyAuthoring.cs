@@ -9,8 +9,10 @@ class EnemyAuthoring : MonoBehaviour
     public float attackSize = 2f;
     public float runSize = 7f;
     public float runSpeed = 10f;
-    public float walkSize = 25f;
-    public float walkSpeed = 2f;
+    public float walkSize = 30f;
+    public float walkSpeed = 3.5f;
+    public float maxSizeForDead = 100f;
+    public float maxSizeWalkSpeed = 2f;
     public float deadStayTime = 5f;
     public EnemyMobs mob = EnemyMobs.NULL;
 }
@@ -33,6 +35,8 @@ class EnemyBaker : Baker<EnemyAuthoring>
             runSpeed = authoring.runSpeed,
             walkSize = authoring.walkSize,
             walkSpeed = authoring.walkSpeed,
+            maxSizeForDead = authoring.maxSizeForDead,
+            maxSizeWalkSpeed = authoring.maxSizeWalkSpeed,
             deadStayTime = authoring.deadStayTime,
             animatior = EnemyAnimatior.Idle,
             mob = authoring.mob
