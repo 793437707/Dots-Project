@@ -91,31 +91,32 @@ public class MapManager : MonoBehaviour
             float posz = planeSize.y * Width / 2;
             for (int j = 0; j < Length; j++)
             {
-                if (random.NextInt(0, 100) < 30)
-                {
-                    //生成奖励箱
-                    Entity box = entityManager.Instantiate(BoxPrefab);
-                    entityManager.AddComponentData(box, new Parent { Value = boxParent });
-                    LocalTransform transform = entityManager.GetComponentData<LocalTransform>(box);
-                    transform.Position.x = posx + (planeSize.x / 2 - 2) * random.NextFloat() * (random.NextBool() ? 1 : -1);
-                    transform.Position.y = 0;
-                    transform.Position.z = posz + (planeSize.y / 2 - 2) * random.NextFloat() * (random.NextBool() ? 1 : -1);
-                    transform.Rotation.value = quaternion.RotateY(random.NextFloat() * 360).value;
-                    entityManager.SetComponentData(box, transform);
+                for(int k = 0; k < 3; k ++)//三次尝试生成
+                    if (random.NextInt(0, 100) < 30)
+                    {
+                        //生成奖励箱
+                        Entity box = entityManager.Instantiate(BoxPrefab);
+                        entityManager.AddComponentData(box, new Parent { Value = boxParent });
+                        LocalTransform transform = entityManager.GetComponentData<LocalTransform>(box);
+                        transform.Position.x = posx + (planeSize.x / 2 - 2) * random.NextFloat() * (random.NextBool() ? 1 : -1);
+                        transform.Position.y = 0;
+                        transform.Position.z = posz + (planeSize.y / 2 - 2) * random.NextFloat() * (random.NextBool() ? 1 : -1);
+                        transform.Rotation.value = quaternion.RotateY(random.NextFloat() * 360).value;
+                        entityManager.SetComponentData(box, transform);
 
-                    //设置箱子里爆出来的物品
-                    Box boxBox = entityManager.GetComponentData<Box>(box);
-                    int boxRandomPrefab = random.NextInt(0, 100);
-                    if (boxRandomPrefab < 50)
-                        boxBox.spawnEntity = BoxHp;
-                    else if (boxRandomPrefab < 80)
-                        boxBox.spawnEntity = BoxMp;
-                    else if (boxRandomPrefab < 90)
-                        boxBox.spawnEntity = BoxCoin;
-                    else //爆的技能，先用coin代替
-                        boxBox.spawnEntity = BoxCoin;
-                    entityManager.SetComponentData(box, boxBox);
-                }
+                        //设置箱子里爆出来的物品
+                        Box boxBox = entityManager.GetComponentData<Box>(box);
+                        int boxRandomPrefab = random.NextInt(0, 100);
+                        if (boxRandomPrefab < 50)
+                            boxBox.spawnEntity = BoxHp;
+                        else if (boxRandomPrefab < 80)
+                            boxBox.spawnEntity = BoxMp;
+                        else if (boxRandomPrefab < 90)
+                            boxBox.spawnEntity = BoxCoin;
+                        else //爆的技能，先用coin代替
+                            boxBox.spawnEntity = BoxCoin;
+                        entityManager.SetComponentData(box, boxBox);
+                    }
 
                 posz -= planeSize.y;
             }
