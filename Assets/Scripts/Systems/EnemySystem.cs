@@ -27,6 +27,7 @@ partial class EnemySystem : SystemBase
         Entity character = GameManager.GetEntityForTag("Character");
         float3 characerPos = character == Entity.Null ? float3.zero : EntityManager.GetComponentData<LocalToWorld>(character).Position;
         characerPos.y = 0;
+        int attackHp = 0;
         //修改血量所需的NativeArray
         NativeArray<int> attack = new NativeArray<int>(1, Allocator.TempJob);
 
@@ -69,6 +70,7 @@ partial class EnemySystem : SystemBase
                     newAnimator = EnemyAnimatior.AttackFirst;
                     //扣玩家血
                     attack[0] += enemy.enemy.ValueRO.damage;
+                    attackHp += enemy.enemy.ValueRO.damage;
                 }
                 else if(dis < enemy.enemy.ValueRO.runSize || enemy.enemy.ValueRO.hp < enemy.enemy.ValueRO.maxHp)
                 {
@@ -103,13 +105,11 @@ partial class EnemySystem : SystemBase
             .WithAll<Character>()
             .ForEach(() =>
             {
-                CharacterData.Inst.hp -= attack[0] * CharacterData.Inst.GetDamage / 100;
+                CharacterData.Inst.hp -= attackHp * CharacterData.Inst.GetDamage / 100;
                 CharacterData.Inst.hp = math.max(0, CharacterData.Inst.hp);
             })
             .WithoutBurst()
             .Schedule();
-
-        //删除NativeArray
         attack.Dispose(Dependency);
         ecbSystem.AddJobHandleForProducer(Dependency);
     }

@@ -8,11 +8,11 @@ class EnemyAuthoring : MonoBehaviour
     public float attackCD = 0.9f;
     public float attackSize = 2f;
     public float runSize = 7f;
-    public float runSpeed = 10f;
+    public float runSpeed = 9f;
     public float walkSize = 30f;
-    public float walkSpeed = 3.5f;
+    public float walkSpeed = 3f;
     public float maxSizeForDead = 100f;
-    public float maxSizeWalkSpeed = 2f;
+    public float maxSizeWalkSpeed = 1.5f;
     public float deadStayTime = 5f;
     public EnemyMobs mob = EnemyMobs.NULL;
 }

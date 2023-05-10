@@ -19,6 +19,7 @@ class GameManager : MonoBehaviour
 
     private static EntityManager entityManager;
     private static EntityQuery tagQuery;
+    private static EntityQuery prefabsQuery;
 
     public static MapManager mapManager;
     public static CameraManager cameraManager;
@@ -40,6 +41,7 @@ class GameManager : MonoBehaviour
 
         entityManager = World.DefaultGameObjectInjectionWorld.EntityManager;
         tagQuery = entityManager.CreateEntityQuery(ComponentType.ReadOnly<Tag>());
+        prefabsQuery = entityManager.CreateEntityQuery(ComponentType.ReadOnly<Prefabs>());
         EntityForTagDictionary = new Dictionary<FixedString64Bytes, Entity>();
     }
 
@@ -69,6 +71,15 @@ class GameManager : MonoBehaviour
         {
             var tag = entityManager.GetComponentData<Tag>(entities[i]);
             EntityForTagDictionary.Add(tag.tag, entities[i]);
+            entityManager.RemoveComponent<Tag>(entities[i]);
+        }
+        entities.Dispose();
+        entities = prefabsQuery.ToEntityArray(Allocator.TempJob);
+        for (int i = 0; i < entities.Length; i++)
+        {
+            var prefabs = entityManager.GetComponentData<Prefabs>(entities[i]);
+            EntityForTagDictionary.Add(prefabs.name, prefabs.Entity);
+            entityManager.RemoveComponent<Prefabs>(entities[i]);
         }
         entities.Dispose();
     }

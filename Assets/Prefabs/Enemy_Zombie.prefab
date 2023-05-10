@@ -30,7 +30,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7801683674958991425}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.655, y: 0, z: -1.013}
+  m_LocalPosition: {x: 10000, y: 10000, z: 10000}
   m_LocalScale: {x: 1.2, y: 1.2, z: 1.2}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -316,11 +316,11 @@ MonoBehaviour:
   damage: 10
   attackCD: 0.9
   attackSize: 2
-  runSize: 10
-  runSpeed: 7
+  runSize: 7
+  runSpeed: 9
   walkSize: 30
-  walkSpeed: 4.5
+  walkSpeed: 3
   maxSizeForDead: 100
-  maxSizeWalkSpeed: 2
+  maxSizeWalkSpeed: 1.5
   deadStayTime: 5
   mob: 0
