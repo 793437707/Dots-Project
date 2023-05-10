@@ -36,25 +36,15 @@ public class MapManager : MonoBehaviour
             planeMaterialsID[i] = (int)hybridRenderer.RegisterMaterial(planeMaterials[i]).value;
     }
 
-    public void CreatPlantMap()
+    void CreatPlantMap()
     {
         Entity planeParent = GameManager.GetEntityForTag("Plane");
         Entity planePrefab = GameManager.GetEntityForTag("PlanePrefab");
-        Entity boxParent = GameManager.GetEntityForTag("Box");
-        Entity BoxPrefab = GameManager.GetEntityForTag("BoxPrefab");
-        if (planeParent == Entity.Null || planePrefab == Entity.Null || BoxPrefab == Entity.Null || boxParent == Entity.Null)
+        if (planeParent == Entity.Null || planePrefab == Entity.Null)
         {
-            Debug.LogError("None Prefab For CreatPlanMap");
+            Debug.LogError("None Prefab For CreatePlanMap");
             return;
         }
-
-        //BOX ENTITY
-        Entity BoxHp = GameManager.GetEntityForTag("BoxHp");
-        Entity BoxMp = GameManager.GetEntityForTag("BoxMp");
-        Entity BoxCoin = GameManager.GetEntityForTag("BoxCoin");
-
-        
-        random = new Unity.Mathematics.Random(MapSeed);
 
         float posx = planeSize.x * Length / 2;
         for (int i = 0; i < Width; i ++)
@@ -74,10 +64,36 @@ public class MapManager : MonoBehaviour
                 meshInfo.Material = planeMaterialsID[index];
                 entityManager.SetComponentData(plane, meshInfo);
 
-                //生成世界装饰
-                //奖励箱
-                if(random.NextInt(0, 100) < 30)
+                posz -= planeSize.y;
+            }
+            posx -= planeSize.x;
+        }
+    }
+
+    void CreateBoxMap()
+    {
+        Entity boxParent = GameManager.GetEntityForTag("Box");
+        Entity BoxPrefab = GameManager.GetEntityForTag("BoxPrefab");
+        if (BoxPrefab == Entity.Null || boxParent == Entity.Null)
+        {
+            Debug.LogError("None Prefab For CreateBoxMap");
+            return;
+        }
+
+        //BOX ENTITY
+        Entity BoxHp = GameManager.GetEntityForTag("BoxHp");
+        Entity BoxMp = GameManager.GetEntityForTag("BoxMp");
+        Entity BoxCoin = GameManager.GetEntityForTag("BoxCoin");
+
+        float posx = planeSize.x * Length / 2;
+        for (int i = 0; i < Width; i++)
+        {
+            float posz = planeSize.y * Width / 2;
+            for (int j = 0; j < Length; j++)
+            {
+                if (random.NextInt(0, 100) < 30)
                 {
+                    //生成奖励箱
                     Entity box = entityManager.Instantiate(BoxPrefab);
                     entityManager.AddComponentData(box, new Parent { Value = boxParent });
                     LocalTransform transform = entityManager.GetComponentData<LocalTransform>(box);
@@ -92,7 +108,7 @@ public class MapManager : MonoBehaviour
                     int boxRandomPrefab = random.NextInt(0, 100);
                     if (boxRandomPrefab < 50)
                         boxBox.spawnEntity = BoxHp;
-                    else if(boxRandomPrefab < 80)
+                    else if (boxRandomPrefab < 80)
                         boxBox.spawnEntity = BoxMp;
                     else if (boxRandomPrefab < 90)
                         boxBox.spawnEntity = BoxCoin;
@@ -100,7 +116,6 @@ public class MapManager : MonoBehaviour
                         boxBox.spawnEntity = BoxCoin;
                     entityManager.SetComponentData(box, boxBox);
                 }
-
 
                 posz -= planeSize.y;
             }
@@ -111,7 +126,9 @@ public class MapManager : MonoBehaviour
     public void CreateMap()
     {
         Debug.Log("Start CreatMap For Seed " + MapSeed);
+        random = new Unity.Mathematics.Random(MapSeed);
         CreatPlantMap();
+        CreateBoxMap();
         Debug.Log("End CreateMap For Seed " + MapSeed);
     }
 }
