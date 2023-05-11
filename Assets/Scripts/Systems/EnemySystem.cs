@@ -13,9 +13,16 @@ using UnityEngine.Windows;
 partial class EnemySystem : SystemBase
 {
     private EntityCommandBufferSystem ecbSystem;
+    private static EntityQuery query;
     protected override void OnCreate()
     {
         ecbSystem = World.GetOrCreateSystemManaged<EndSimulationEntityCommandBufferSystem>();
+        var queryDescription = new EntityQueryDesc
+        {
+            None = new ComponentType[] { ComponentType.ReadOnly<AutoDestory>() },
+            All = new ComponentType[]{ ComponentType.ReadOnly<Enemy>() }
+        };
+        query = GetEntityQuery(queryDescription);
     }
 
 
@@ -29,9 +36,9 @@ partial class EnemySystem : SystemBase
         float3 characerPos = character == Entity.Null ? float3.zero : EntityManager.GetComponentData<LocalToWorld>(character).Position;
         characerPos.y = 0;
         //修改血量所需的NativeArray
-        NativeArray<int> attack = new NativeArray<int>(1, Allocator.TempJob);
+        int dataCount = query.CalculateEntityCount();
+        NativeArray<int> attack = new NativeArray<int>(dataCount, Allocator.TempJob);
         Entities
-            .WithNativeDisableParallelForRestriction(attack) //多线程访问NativeArray
             .WithNone<AutoDestory>()
             .ForEach((ref EnemyAspects enemy, in int entityInQueryIndex, in Entity entity) =>
             {
@@ -69,7 +76,7 @@ partial class EnemySystem : SystemBase
                     enemy.enemy.ValueRW.attackTime = enemy.enemy.ValueRO.attackCD;
                     newAnimator = EnemyAnimatior.AttackFirst;
                     //扣玩家血
-                    attack[0] += enemy.enemy.ValueRO.damage;
+                    attack[entityInQueryIndex] += enemy.enemy.ValueRO.damage;
                 }
                 else if(dis < enemy.enemy.ValueRO.runSize || enemy.enemy.ValueRO.hp < enemy.enemy.ValueRO.maxHp)
                 {
@@ -104,7 +111,12 @@ partial class EnemySystem : SystemBase
             .WithAll<Character>()
             .ForEach(() =>
             {
-                CharacterData.Inst.hp -= attack[0] * CharacterData.Inst.GetDamage / 100;
+                int sum = 0;
+                for(int i = 0; i < attack.Length; i++)
+                {
+                    sum += attack[i];
+                }
+                CharacterData.Inst.hp -= sum * CharacterData.Inst.GetDamage / 100;
                 CharacterData.Inst.hp = math.max(0, CharacterData.Inst.hp);
             })
             .WithDisposeOnCompletion(attack)

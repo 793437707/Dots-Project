@@ -27,11 +27,11 @@ MonoBehaviour:
     value: -5
   - title: "\u5438\u8840"
     des: "\u653B\u51FB\u56DE\u590D\u751F\u547D\u503C\u6BD4\u4F8B\u6BCF\u7EA7\u589E\u52A0
-      2% \uFF08\u6700\u591A+10%\uFF09"
+      4% \uFF08\u6700\u591A+20%\uFF09"
     cost: 1e00000032000000460000005a00000078000000
     iconID: 3
     type: 10
-    value: 2
+    value: 4
   - title: "\u989D\u5916\u751F\u547D"
     des: "\u6700\u5927\u751F\u547D\u503C\u6BCF\u7EA7\u589E\u52A0 50 \uFF08\u6700\u591A+150\uFF09"
     cost: 280000004600000078000000
