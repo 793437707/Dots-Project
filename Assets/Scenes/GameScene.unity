@@ -8265,11 +8265,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Main Canvas
       objectReference: {fileID: 0}
-    - target: {fileID: 5762733831568726994, guid: 50053f1aeb7eacc44956b61945be847e,
-        type: 3}
-      propertyPath: m_FontData.m_Alignment
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 8564719094019648285, guid: 50053f1aeb7eacc44956b61945be847e,
         type: 3}
       propertyPath: m_Pivot.x

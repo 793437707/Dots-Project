@@ -95,6 +95,7 @@ class GameManager : MonoBehaviour
         MapManager.MapSeed = 1919191;
         GameOver = false;
         WorldData.Inst.totalSeconds = 0;
+        WorldData.Inst.totalScore = 0;
         CharacterData.Inst.Reset();
 
         SwitchPause();
