@@ -20,9 +20,11 @@ public class WorldData
     private WorldData()
     {
         totalSeconds = 0;
+        totalScore = 0;
     }
 
     public float totalSeconds;
+    public int totalScore;
     public int minute => (int)totalSeconds / 60;
     public int second => (int)totalSeconds % 60;
 }

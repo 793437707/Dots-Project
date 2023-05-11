@@ -169,6 +169,8 @@ class GameManager : MonoBehaviour
         GameData.Inst.MaxPlayTime = Math.Max(GameData.Inst.MaxPlayTime, (int)WorldData.Inst.totalSeconds);
         GameData.Inst.PlayTimes += 1;
         GameData.Inst.TotalPlayTime += (int)WorldData.Inst.totalSeconds;
+        GameData.Inst.MaxScore = Math.Max(GameData.Inst.MaxScore, WorldData.Inst.totalScore);
+        GameData.Inst.TotalScore += WorldData.Inst.totalScore;
 
         GameData.Inst.SavaData();
     }

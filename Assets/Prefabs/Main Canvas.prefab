@@ -3318,6 +3318,11 @@ PrefabInstance:
       propertyPath: m_FontData.m_FontSize
       value: 52
       objectReference: {fileID: 0}
+    - target: {fileID: 8846529027151613518, guid: dfd2a276e778d2f4db2252095d1a7326,
+        type: 3}
+      propertyPath: m_FontData.m_Alignment
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

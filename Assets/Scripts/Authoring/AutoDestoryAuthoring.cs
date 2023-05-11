@@ -4,6 +4,7 @@ using UnityEngine;
 class AutoDestoryAuthoring : MonoBehaviour
 {
     public float destoryTime = 3f;
+    public int score = 1;
 }
 
 class AutoDestoryBaker : Baker<AutoDestoryAuthoring>
@@ -13,7 +14,9 @@ class AutoDestoryBaker : Baker<AutoDestoryAuthoring>
         var e = GetEntity(authoring, TransformUsageFlags.Dynamic);
         AddComponent(e, new AutoDestory
         {
-            destoryTime = authoring.destoryTime
+            destoryTime = authoring.destoryTime,
+            score = authoring.score,
+            added = false
         });
     }
 }

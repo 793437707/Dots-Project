@@ -45,7 +45,7 @@ partial class AddCharacterDataSystem : SystemBase
                 CharacterData.Inst.AddValueByAddEnum(data.type, data.value);
 
                 if(data.AddOnce)
-                    ecb.AddComponent(entityInQueryIndex, entity, new AutoDestory { destoryTime = -1 });
+                    ecb.AddComponent(entityInQueryIndex, entity, new AutoDestory { destoryTime = -1, score = 0 });
             })
             .WithoutBurst()
             .ScheduleParallel();
@@ -56,7 +56,7 @@ partial class AddCharacterDataSystem : SystemBase
             {
                 if (box.hp > 0)
                     return;
-                ecb.AddComponent(entityInQueryIndex, entity, new AutoDestory { destoryTime = 2 });
+                ecb.AddComponent(entityInQueryIndex, entity, new AutoDestory { destoryTime = 2, score = 50 });
                 ecb.SetComponent(entityInQueryIndex, entity, new PhysicsVelocity
                 {
                     Linear = new float3(0, -2, 0)

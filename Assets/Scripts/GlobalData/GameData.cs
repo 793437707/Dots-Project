@@ -26,6 +26,8 @@ public class GameData
         PlayTimes = 0;
         TotalPlayTime = 0;
         GlodCoin = 0;
+        MaxScore = 0;
+        TotalScore = 0;
         AchievementReceive = new List<bool>();
         TianFuLevel = new List<int>();
     }
@@ -34,6 +36,8 @@ public class GameData
     public int PlayTimes;
     public int TotalPlayTime;
     public int GlodCoin;
+    public int MaxScore;
+    public int TotalScore;
 
     public List<bool> AchievementReceive;
     public List<int> TianFuLevel;

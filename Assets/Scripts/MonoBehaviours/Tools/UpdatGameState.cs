@@ -8,7 +8,6 @@ using UnityEngine.UI;
 public class UpdatGameState : MonoBehaviour
 {
    
-    TextMeshProUGUI text;
     Transform HP, MP;
     Image HPImage, MPImage;
     Text HPText, MPText, LastTimeText;
@@ -36,7 +35,7 @@ public class UpdatGameState : MonoBehaviour
         MPText.text = $"{CharacterData.Inst.mp}/{CharacterData.Inst.mpMax}";
         //显示游玩时间
         WorldData.Inst.totalSeconds += Time.deltaTime;
-        LastTimeText.text = string.Format("{0:D2} : {1:D2}", WorldData.Inst.minute, WorldData.Inst.second);
+        LastTimeText.text = string.Format("{0:D2} : {1:D2}\nScore:{2}", WorldData.Inst.minute, WorldData.Inst.second, WorldData.Inst.totalScore);
 
     }
 }

@@ -48,7 +48,7 @@ partial class EnemySystem : SystemBase
                     if (enemy.enemy.ValueRO.animatior != EnemyAnimatior.Dead)
                     {
                         enemy.enemy.ValueRW.animatior = EnemyAnimatior.DeadFirst;
-                        ecb.AddComponent(entityInQueryIndex, entity, new AutoDestory { destoryTime = enemy.enemy.ValueRO.deadStayTime });
+                        ecb.AddComponent(entityInQueryIndex, entity, new AutoDestory { destoryTime = enemy.enemy.ValueRO.deadStayTime, score = 10});
                         ecb.RemoveComponent<PhysicsCollider>(entityInQueryIndex, entity);
                         ecb.RemoveComponent<PhysicsVelocity>(entityInQueryIndex, entity);
                     }
@@ -76,7 +76,7 @@ partial class EnemySystem : SystemBase
                     enemy.enemy.ValueRW.attackTime = enemy.enemy.ValueRO.attackCD;
                     newAnimator = EnemyAnimatior.AttackFirst;
                     //扣玩家血
-                    attack[entityInQueryIndex] += enemy.enemy.ValueRO.damage;
+                    attack[entityInQueryIndex] = enemy.enemy.ValueRO.damage;
                 }
                 else if(dis < enemy.enemy.ValueRO.runSize || enemy.enemy.ValueRO.hp < enemy.enemy.ValueRO.maxHp)
                 {
@@ -95,7 +95,7 @@ partial class EnemySystem : SystemBase
                 }
                 else
                 {
-                    ecb.AddComponent(entityInQueryIndex, entity, new AutoDestory { destoryTime = -1 });
+                    ecb.AddComponent(entityInQueryIndex, entity, new AutoDestory { destoryTime = -1, score = 0 });
                 }
                 //修改动画标识
                 enemy.enemy.ValueRW.animatior = newAnimator;
