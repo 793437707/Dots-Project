@@ -34,11 +34,15 @@ partial class SpawnEnemySystem : SystemBase
             return;
         Entity Parent = GameManager.GetEntityForTag("Enemy");
 
+        float differentHpAdd = WorldData.Inst.differentHpAdd;
+        float differentDmgAdd = WorldData.Inst.differentDmgAdd;
+        float differentSpawnAdd = WorldData.Inst.differentSpawnAdd;
+
 
         Entities
             .ForEach((in Character character, in LocalToWorld transform, in int entityInQueryIndex) =>
             {
-                spawnTimer -= deltaTime * 1;
+                spawnTimer -= deltaTime * (1 + differentDmgAdd);
                 if (spawnTimer > 0)
                     return;
                 spawnTimer += spawnCD;
@@ -53,8 +57,8 @@ partial class SpawnEnemySystem : SystemBase
                 zombieTransform.Position.x += dis * math.sin(angel);
                 zombieTransform.Position.z += dis * math.cos(angel);
 
-                zombieEnemy.hp *= 1;
-                zombieEnemy.damage *= 1;
+                zombieEnemy.hp = (int)(zombieEnemy.hp * (1 + differentHpAdd));
+                zombieEnemy.damage = (int)(zombieEnemy.damage * (1 + differentDmgAdd));
 
                 //生成实体
                 Entity enemy = ecb.Instantiate(entityInQueryIndex, EnemyZombie);

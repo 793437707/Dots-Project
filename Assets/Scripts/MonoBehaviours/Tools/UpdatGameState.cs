@@ -33,9 +33,8 @@ public class UpdatGameState : MonoBehaviour
         MPImage.fillAmount = 1.0f * CharacterData.Inst.mp / CharacterData.Inst.mpMax;
         HPText.text = $"{CharacterData.Inst.hp}/{CharacterData.Inst.hpMax}";
         MPText.text = $"{CharacterData.Inst.mp}/{CharacterData.Inst.mpMax}";
-        //显示游玩时间
+        //显示游玩时间，难度
         WorldData.Inst.totalSeconds += Time.deltaTime;
-        LastTimeText.text = string.Format("{0:D2} : {1:D2}\nScore:{2}", WorldData.Inst.minute, WorldData.Inst.second, WorldData.Inst.totalScore);
-
+        LastTimeText.text = string.Format("{0:D2} : {1:D2}\nScore:{2}   Different:{3:N1}", WorldData.Inst.minute, WorldData.Inst.second, WorldData.Inst.totalScore, WorldData.Inst.different);
     }
 }
