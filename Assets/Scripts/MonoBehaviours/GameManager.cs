@@ -28,6 +28,7 @@ class GameManager : MonoBehaviour
 
     public static Dictionary<FixedString64Bytes, Entity> EntityForTagDictionary;
 
+    [HideInInspector]
     public bool GameOver = false;
     
     private bool isPause = false;
@@ -51,7 +52,16 @@ class GameManager : MonoBehaviour
 
     private void LoadOption()
     {
+        StartCoroutine(LoadOptionMuteAudio());
+    }
+
+    IEnumerator LoadOptionMuteAudio()
+    {
+        AudioListener.volume = 0;
         uIManager.LoadOption();
+        //防止读取时播放声音，先静音一下
+        yield return new WaitForSeconds(0.5f);
+        AudioListener.volume = 1;
     }
 
     public static Entity GetEntityForTag(string name = "Root")

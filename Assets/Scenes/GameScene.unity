@@ -7301,8 +7301,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76ce56f50a43f2041afcb73398495d45, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_appTargetFrameRate: 0
-  m_vSyncCount: 0
   subScene: {fileID: 547846073}
   GameOver: 0
 --- !u!114 &1412220502
@@ -8260,40 +8258,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1874369953390301495, guid: 50053f1aeb7eacc44956b61945be847e,
-        type: 3}
-      propertyPath: m_SizeDelta.y
-      value: 34
-      objectReference: {fileID: 0}
     - target: {fileID: 4034694545691544805, guid: 50053f1aeb7eacc44956b61945be847e,
         type: 3}
       propertyPath: m_Name
       value: Main Canvas
-      objectReference: {fileID: 0}
-    - target: {fileID: 8262446227236443686, guid: 50053f1aeb7eacc44956b61945be847e,
-        type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8262446227236443686, guid: 50053f1aeb7eacc44956b61945be847e,
-        type: 3}
-      propertyPath: m_AnchorMin.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8262446227236443686, guid: 50053f1aeb7eacc44956b61945be847e,
-        type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 199
-      objectReference: {fileID: 0}
-    - target: {fileID: 8262446227236443686, guid: 50053f1aeb7eacc44956b61945be847e,
-        type: 3}
-      propertyPath: m_SizeDelta.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8262446227236443686, guid: 50053f1aeb7eacc44956b61945be847e,
-        type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 8564719094019648285, guid: 50053f1aeb7eacc44956b61945be847e,
         type: 3}
