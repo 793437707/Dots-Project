@@ -67,3 +67,51 @@ MonoBehaviour:
       type: 2
       value: 36000
     reward: 400
+  - title: "\u5F97\u5206\uFF0C\u80DC\u5229"
+    des: "\u5355\u6B21\u6E38\u73A9\u5206\u6570\u8FBE\u5230200"
+    condition:
+      type: 4
+      value: 200
+    reward: 30
+  - title: "\u5F97\u5206\uFF0C\u80DC\u5229 II"
+    des: "\u5355\u6B21\u6E38\u73A9\u5206\u6570\u8FBE\u5230700"
+    condition:
+      type: 4
+      value: 700
+    reward: 80
+  - title: "\u5F97\u5206\uFF0C\u80DC\u5229 III"
+    des: "\u5355\u6B21\u6E38\u73A9\u5206\u6570\u8FBE\u52301500"
+    condition:
+      type: 4
+      value: 1500
+    reward: 170
+  - title: "\u5F97\u5206\uFF0C\u80DC\u5229 IV"
+    des: "\u5355\u6B21\u6E38\u73A9\u5206\u6570\u8FBE\u52303000"
+    condition:
+      type: 4
+      value: 3000
+    reward: 310
+  - title: "\u5F97\u5206\uFF0C\u80DC\u5229 V"
+    des: "\u5355\u6B21\u6E38\u73A9\u5206\u6570\u8FBE\u52307000"
+    condition:
+      type: 4
+      value: 7000
+    reward: 700
+  - title: "\u5206\u6570\u5F53\u7136\u662F\u8D8A\u591A\u8D8A\u597D"
+    des: "\u6E38\u73A9\u603B\u5206\u8FBE\u52301000"
+    condition:
+      type: 5
+      value: 1000
+    reward: 55
+  - title: "\u5206\u6570\u5F53\u7136\u662F\u8D8A\u591A\u8D8A\u597DII"
+    des: "\u6E38\u73A9\u603B\u5206\u8FBE\u52305000"
+    condition:
+      type: 5
+      value: 5000
+    reward: 140
+  - title: "\u5206\u6570\u5F53\u7136\u662F\u8D8A\u591A\u8D8A\u597DIII"
+    des: "\u6E38\u73A9\u603B\u5206\u8FBE\u523012000"
+    condition:
+      type: 5
+      value: 12000
+    reward: 310

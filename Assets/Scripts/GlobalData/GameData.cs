@@ -92,4 +92,6 @@ public enum GameDataEnum
     PlayTimes,
     TotalPlayTime,
     GlodCoin,
+    MaxScore,
+    TotalScore,
 }
