@@ -20,6 +20,8 @@ partial class AddCharacterDataSystem : SystemBase
     }
     protected override void OnUpdate()
     {
+        if (!GameManager.inGame)
+            return;
         var ecb = ecbSystem.CreateCommandBuffer().AsParallelWriter();
         float deltaTime = SystemAPI.Time.DeltaTime;
         //获取玩家坐标

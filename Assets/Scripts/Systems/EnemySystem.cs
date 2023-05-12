@@ -28,6 +28,8 @@ partial class EnemySystem : SystemBase
 
     protected override void OnUpdate()
     {
+        if (!GameManager.inGame)
+            return;
         var ecb = ecbSystem.CreateCommandBuffer().AsParallelWriter();
         float deltaTime = SystemAPI.Time.DeltaTime;
 

@@ -9,6 +9,8 @@ partial class AutoRotateSystem : SystemBase
 {
     protected override void OnUpdate()
     {
+        if (!GameManager.inGame)
+            return;
         float deltaTime = SystemAPI.Time.DeltaTime;
 
         Entities

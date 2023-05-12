@@ -17,6 +17,8 @@ partial class SpawnMobsSystem : SystemBase
 
     protected override void OnUpdate()
     {
+        if (!GameManager.inGame)
+            return;
         var ecb = ecbSystem.CreateCommandBuffer().AsParallelWriter();
         float deltaTime = SystemAPI.Time.DeltaTime;
         bool mouseInput = Input.GetMouseButton(0) || GameManager.MouseAutoSpawn;

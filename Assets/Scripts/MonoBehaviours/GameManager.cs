@@ -8,12 +8,10 @@ using UnityEngine;
 
 class GameManager : MonoBehaviour
 {
-    [Tooltip("The target frame-rate for the app. If set it to zero, the rate won't be set.  (default 0)")] public int m_appTargetFrameRate = 0;
-    [Tooltip("The vsync count for the app. If set to zero, the count won't be set. (default 0)")] public int m_vSyncCount = 0;
-
     public static bool MouseAutoSpawn { get { return GameData.Inst.Option[1]; } }
 
     public static int OptionSize = 6;
+    public static bool inGame = false;
 
     public SubScene subScene;
     private Entity subSceneEntity;
@@ -31,14 +29,13 @@ class GameManager : MonoBehaviour
     public static Dictionary<FixedString64Bytes, Entity> EntityForTagDictionary;
 
     public bool GameOver = false;
-
+    
     private bool isPause = false;
+
 
     private void Awake()
     {
         gameManager = this;
-        if (m_appTargetFrameRate >= 0) { Application.targetFrameRate = m_appTargetFrameRate; }
-        if (m_vSyncCount >= 0) { QualitySettings.vSyncCount = m_vSyncCount; }
 
         entityManager = World.DefaultGameObjectInjectionWorld.EntityManager;
         tagQuery = entityManager.CreateEntityQuery(ComponentType.ReadOnly<Tag>());
@@ -128,6 +125,7 @@ class GameManager : MonoBehaviour
         SwitchPause();
         yield return null;
         uIManager.LoadingToGame();
+        inGame = true;
         Debug.Log("Load Game End");
     }
 
@@ -147,6 +145,7 @@ class GameManager : MonoBehaviour
         yield return null;
 
         SwitchPause();
+        inGame = false;
         uIManager.LoadingToMain();
         Debug.Log("Unload Game End");
     }

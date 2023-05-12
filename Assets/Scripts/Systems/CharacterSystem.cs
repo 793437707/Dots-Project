@@ -13,6 +13,8 @@ partial class CharacterSystem : SystemBase
 {
     protected override void OnUpdate()
     {
+        if (!GameManager.inGame)
+            return;
         float deltaTime = SystemAPI.Time.DeltaTime;
 
         const float rotateSpeed = 10f;

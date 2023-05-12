@@ -10,6 +10,8 @@ partial class AnimationChangerSystem : SystemBase
 {
     protected override void OnUpdate()
     {
+        if (!GameManager.inGame)
+            return;
         Entities
             .ForEach((ref CharacterAspects character, ref AnimationCmdData cmd, in AnimationStateData state) =>
             {

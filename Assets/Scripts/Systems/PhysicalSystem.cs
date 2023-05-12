@@ -58,6 +58,8 @@ partial class PhysicalSystem : SystemBase
 
     protected override void OnUpdate()
     {
+        if (!GameManager.inGame)
+            return;
         NativeArray<int> damageOut = new NativeArray<int>(1, Allocator.TempJob);
 
         Dependency = new BulletTriggerEvents
