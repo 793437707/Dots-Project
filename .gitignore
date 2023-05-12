@@ -11,4 +11,5 @@ BuildGame/
 *.userprefs
 *.unityproj
 *.DS_Store
+*.cd
 BuildGame.zip
