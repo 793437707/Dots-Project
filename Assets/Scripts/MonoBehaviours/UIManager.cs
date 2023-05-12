@@ -71,6 +71,34 @@ public class UIManager : MonoBehaviour
     {
         Game.transform.Find("SettingBtn").gameObject.SetActive(false);
         Dead.SetActive(true);
+
+
+        System.Text.StringBuilder str = new System.Text.StringBuilder();
+        str.Append("本轮得分：");
+        str.Append(WorldData.Inst.totalScore);
+        if (GameData.Inst.MaxScore == WorldData.Inst.totalScore)
+            str.Append("新纪录！");
+        str.Append('\n');
+
+        str.Append("历史最高得分：");
+        str.Append(GameData.Inst.MaxScore);
+        str.Append("\n");
+
+        str.Append("本轮用时：");
+        str.Append(string.Format("{0:D2} : {1:D2}", WorldData.Inst.minute, WorldData.Inst.second));
+        if (GameData.Inst.MaxPlayTime == WorldData.Inst.totalSeconds)
+            str.Append("新纪录！");
+        str.Append("\n");
+
+        str.Append("历史最长游戏：");
+        str.Append(string.Format("{0:D2} : {1:D2}", GameData.Inst.MaxPlayTime / 60, GameData.Inst.MaxPlayTime % 60));
+        str.Append("\n");
+
+        str.Append("随机种子：");
+        str.Append(GameData.Inst.MapSeed);
+        str.Append("\n");
+
+        Dead.transform.Find("DeadUI/ScoreText").GetComponent<Text>().text = str.ToString();
     }
     public void LoadingToGame()
     {

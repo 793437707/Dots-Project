@@ -178,8 +178,8 @@ class GameManager : MonoBehaviour
     {
         SwitchPause();
         GameOver = true;
-        uIManager.ShowDead();
         SaveLocalGameData();
+        uIManager.ShowDead();
     }
 
     public void SaveLocalGameData()
