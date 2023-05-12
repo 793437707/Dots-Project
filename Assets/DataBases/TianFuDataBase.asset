@@ -14,11 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   data:
   - title: "\u529B\u91CF"
-    des: "\u9020\u6210\u7684\u4F24\u5BB3\u6BCF\u7EA7\u589E\u52A0 10% \uFF08\u6700\u591A+50%\uFF09"
+    des: "\u9020\u6210\u7684\u4F24\u5BB3\u6BCF\u7EA7\u589E\u52A0 20% \uFF08\u6700\u591A+100%\uFF09"
     cost: 0a000000140000001e0000003200000046000000
     iconID: 0
     type: 5
-    value: 10
+    value: 20
   - title: "\u53E0\u7532"
     des: "\u62A4\u7532\u6BCF\u7EA7\u589E\u52A0 5% \uFF08\u6700\u591A+30%\uFF09"
     cost: 0a000000140000001e000000320000004600000064000000
@@ -58,24 +58,17 @@ MonoBehaviour:
     value: 50
   - title: "\u7C92\u5B50\u52A0\u901F"
     des: "\u6CD5\u7403\u7684\u79FB\u52A8\u901F\u5EA6\u6BCF\u7EA7\u589E\u52A0 10%
-      \uFF08\u6700\u591A+30%\uFF09"
-    cost: 140000001e00000032000000
+      \uFF08\u6700\u591A+40%\uFF09"
+    cost: 140000001e0000003200000046000000
     iconID: 4
     type: 8
     value: 10
   - title: "\u65BD\u6CD5\u52A0\u901F"
-    des: "\u6CD5\u7403\u7684\u751F\u6210\u6BCF\u7EA7\u51CF\u5C11 5% \uFF08\u6700\u591A+30%\uFF09"
-    cost: 0f00000019000000280000003c000000500000006e000000
+    des: "\u6CD5\u7403\u7684\u751F\u6210\u6BCF\u7EA7\u51CF\u5C11 8% \uFF08\u6700\u591A+40%\uFF09"
+    cost: 19000000280000003c0000005000000078000000
     iconID: 5
     type: 6
-    value: -5
-  - title: "\u98DE\u5F97\u66F4\u8FDC"
-    des: "\u6CD5\u7403\u7684\u98DE\u884C\u8DDD\u79BB\u6BCF\u7EA7\u589E\u52A0 15%
-      \uFF08\u6700\u591A+60%\uFF09"
-    cost: 1e00000032000000460000005a000000
-    iconID: 6
-    type: 7
-    value: 15
+    value: -8
   - title: "\u5E78\u8FD0\u56DB\u53F6\u8349"
     des: "\u5E78\u8FD0\u6BCF\u7EA7\u589E\u52A0 20% \uFF08\u6700\u591A+100%\uFF09"
     cost: 0a000000140000001e0000003200000046000000
@@ -88,6 +81,13 @@ MonoBehaviour:
     iconID: 11
     type: 4
     value: 5
+  - title: "\u98DE\u5F97\u66F4\u8FDC"
+    des: "\u6CD5\u7403\u7684\u98DE\u884C\u8DDD\u79BB\u6BCF\u7EA7\u589E\u52A0 15%
+      \uFF08\u6700\u591A+75%\uFF09"
+    cost: 1e00000032000000460000005a0000006e000000
+    iconID: 6
+    type: 7
+    value: 15
   images:
   - {fileID: 21300000, guid: 540cfa3f44d95574fb6fe4e164d0f3a9, type: 3}
   - {fileID: 21300000, guid: 0b5d755eb91897d4eb38385c4521bde0, type: 3}
