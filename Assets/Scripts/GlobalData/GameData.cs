@@ -28,8 +28,10 @@ public class GameData
         GlodCoin = 0;
         MaxScore = 0;
         TotalScore = 0;
+        MapSeed = 13141314;
         AchievementReceive = new List<bool>();
         TianFuLevel = new List<int>();
+        Option = new List<bool>();
     }
 
     public int MaxPlayTime;
@@ -38,9 +40,11 @@ public class GameData
     public int GlodCoin;
     public int MaxScore;
     public int TotalScore;
+    public uint MapSeed;
 
     public List<bool> AchievementReceive;
     public List<int> TianFuLevel;
+    public List<bool> Option;
 
     string path = Application.persistentDataPath + "/GameData.dat";
     //读取数据
@@ -58,6 +62,8 @@ public class GameData
         var tianfuSize = GameManager.databasesManager.TianFuGetSize();
         while(TianFuLevel.Count < tianfuSize)
             TianFuLevel.Add(0);
+        while(Option.Count < GameManager.OptionSize)
+            Option.Add(false);
 
     }
     //保存数据

@@ -7,7 +7,7 @@ using UnityEngine;
 
 public class MapManager : MonoBehaviour
 {
-    public static uint MapSeed = 1919191;
+    public static uint MapSeed { get { return GameData.Inst.MapSeed; } }
     public static int Length = 30;
     public static int Width = 30;
 

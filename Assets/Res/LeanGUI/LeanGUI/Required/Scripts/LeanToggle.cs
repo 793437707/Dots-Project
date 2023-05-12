@@ -64,6 +64,15 @@ namespace Lean.Gui
 			On = !On;
 		}
 
+		public void InitAndTurn(bool value)
+		{
+			on = value;
+			if (value)
+				TurnOnNow();
+			else
+				TurnOffNow();
+		}
+
 		/// <summary>If this toggle is turned off, then this will turn it on.</summary>
 		[ContextMenu("Turn On")]
 		public void TurnOn()

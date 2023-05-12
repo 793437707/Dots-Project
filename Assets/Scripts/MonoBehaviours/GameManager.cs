@@ -11,8 +11,9 @@ class GameManager : MonoBehaviour
     [Tooltip("The target frame-rate for the app. If set it to zero, the rate won't be set.  (default 0)")] public int m_appTargetFrameRate = 0;
     [Tooltip("The vsync count for the app. If set to zero, the count won't be set. (default 0)")] public int m_vSyncCount = 0;
 
-    public static bool MouseAutoSpawn;
-    public static int MapSeed = 1919191;
+    public static bool MouseAutoSpawn { get { return GameData.Inst.Option[1]; } }
+
+    public static int OptionSize = 6;
 
     public SubScene subScene;
     private Entity subSceneEntity;
@@ -48,12 +49,12 @@ class GameManager : MonoBehaviour
     private void Start()
     {
         GameData.Inst.LoadData();
-        LoadSetting();
+        LoadOption();
     }
 
-    private void LoadSetting()
+    private void LoadOption()
     {
-        MouseAutoSpawn = true;
+        uIManager.LoadOption();
     }
 
     public static Entity GetEntityForTag(string name = "Root")
@@ -92,7 +93,15 @@ class GameManager : MonoBehaviour
     IEnumerator LoadGame()
     {
         //º”‘ÿ ˝æ›
-        MapManager.MapSeed = 1919191;
+        if (GameData.Inst.Option[2])
+        {
+            var random = new Unity.Mathematics.Random(GameData.Inst.MapSeed);
+            uint newSeed = random.NextUInt();
+            GameData.Inst.MapSeed = newSeed;
+            GameData.Inst.SavaData();
+        }
+
+
         GameOver = false;
         WorldData.Inst.totalSeconds = 0;
         WorldData.Inst.totalScore = 0;
