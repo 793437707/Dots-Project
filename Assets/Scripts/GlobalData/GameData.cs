@@ -62,6 +62,9 @@ public class GameData
         var tianfuSize = GameManager.databasesManager.TianFuGetSize();
         while(TianFuLevel.Count < tianfuSize)
             TianFuLevel.Add(0);
+        var optionSize = GameManager.OptionSize;
+        while (Option.Count < optionSize)
+            Option.Add(false);
 
     }
     //保存数据
