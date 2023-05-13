@@ -60,6 +60,7 @@ public class CharacterData
                 exp -= LevelUpExp;
                 level++;
                 //Ëæ»úÒ»¸ö½±Àø
+                GameManager.databasesManager.LevelUp();
             }
         } }
 

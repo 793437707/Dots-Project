@@ -12,6 +12,7 @@ public class UIManager : MonoBehaviour
     private GameObject Main, Setting, Loading, Game, Dead, Option;
     private Queue<string> message;
     Text LoadingText, MessageText;
+    bool isMessageModify = false;
 
     private void Awake()
     {
@@ -165,16 +166,25 @@ public class UIManager : MonoBehaviour
         }
     }
 
-    void AddMessage(string text)
+    public void AddMessage(string text)
     {
         message.Enqueue(string.Format("[{0:D2}:{1:D2}]{2}", WorldData.Inst.minute, WorldData.Inst.second, text));
         if (message.Count > 6)
             message.Dequeue();
-        StringBuilder str = new StringBuilder();
-        foreach(string t in message)
+        isMessageModify = true;
+    }
+
+    public void UpdateMessage()
+    {
+        if(isMessageModify)
         {
-            str.AppendLine(t);
+            StringBuilder str = new StringBuilder();
+            foreach (string t in message)
+            {
+                str.AppendLine(t);
+            }
+            MessageText.text = str.ToString();
+            isMessageModify = false;
         }
-        MessageText.text = str.ToString();
     }
 }

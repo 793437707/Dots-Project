@@ -133,4 +133,9 @@ public class MapManager : MonoBehaviour
         CreateBoxMap();
         Debug.Log("End CreateMap For Seed " + MapSeed);
     }
+
+    public int GetRandomIdx(int count)
+    {
+        return random.NextInt(0, count);
+    }
 }

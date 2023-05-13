@@ -11,6 +11,7 @@ public class DatabasesManager : MonoBehaviour
     }
     public AchievementDataBase achievement;
     public TianFuDataBase tianfu;
+    public LevelUpDataBase levelup;
 
 
     public int AchievementGetSize()
@@ -95,5 +96,17 @@ public class DatabasesManager : MonoBehaviour
             return;
         }
         GameData.Inst.SavaData();
+    }
+
+    public int LevelUpGetSize()
+    {
+        return levelup.data.Count;
+    }
+
+    public void LevelUp()
+    {
+        int idx = GameManager.mapManager.GetRandomIdx(LevelUpGetSize());
+        CharacterData.Inst.AddValueByEnum(levelup.data[idx].type, levelup.data[idx].value);
+        GameManager.uIManager.AddMessage(levelup.data[idx].text);
     }
 }

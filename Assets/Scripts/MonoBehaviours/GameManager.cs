@@ -10,7 +10,7 @@ class GameManager : MonoBehaviour
 {
     public static bool MouseAutoSpawn { get { return GameData.Inst.Option[1]; } }
 
-    public static int OptionSize = 6;
+    public static int OptionSize = 7;
     public static bool inGame = false;
 
     public SubScene subScene;

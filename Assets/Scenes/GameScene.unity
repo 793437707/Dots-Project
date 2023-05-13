@@ -959,6 +959,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   achievement: {fileID: 11400000, guid: 9bdf1217d4ae3524b86e84c2db60d948, type: 2}
   tianfu: {fileID: 11400000, guid: 454cdbdfb82275e4087fb11e8d32846d, type: 2}
+  levelup: {fileID: 11400000, guid: d2e9fb0212905874e84956ceff8fdb9e, type: 2}
 --- !u!1001 &688086765707713862
 PrefabInstance:
   m_ObjectHideFlags: 0

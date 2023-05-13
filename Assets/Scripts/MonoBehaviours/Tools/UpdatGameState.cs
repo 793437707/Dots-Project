@@ -42,5 +42,6 @@ public class UpdatGameState : MonoBehaviour
         //更新等级，显示等级信息
         XPText.text = CharacterData.Inst.level.ToString();
         XPImage.fillAmount = 1.0f - 1.0f * CharacterData.Inst.exp / CharacterData.Inst.LevelUpExp;
+        GameManager.uIManager.UpdateMessage();
     }
 }
