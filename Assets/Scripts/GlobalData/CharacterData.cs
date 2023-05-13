@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Mathematics;
 using UnityEngine;
 
 public class CharacterData
@@ -44,6 +45,23 @@ public class CharacterData
     public int mpAdd { get { return 0; } set { mp = Mathf.Max(0, Mathf.Min(mpMax, mp + value)); } }
 
     public int coinAdd { get { return 0; } set { GameData.Inst.AddValueByEnum(GameDataEnum.GlodCoin, value); } }
+    
+    public int LevelUpExp { get 
+        {
+            if (level == MaxLevel) return 1000000007;
+            return (int)(level * math.log10(level) + 10);
+        } }
+
+    public int xpAdd { get { return 0; } set 
+        {
+            exp += value;
+            while(exp >= LevelUpExp)
+            {
+                exp -= LevelUpExp;
+                level++;
+                //Ëæ»úÒ»¸ö½±Àø
+            }
+        } }
 
     public void Reset()
     {
@@ -136,5 +154,6 @@ public enum CharacterAddDataEnum
     GetDamage,
     hpAdd,
     mpAdd,
-    coinAdd
+    coinAdd,
+    xpAdd,
 }

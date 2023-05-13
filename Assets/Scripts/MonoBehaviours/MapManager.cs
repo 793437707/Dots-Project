@@ -84,6 +84,7 @@ public class MapManager : MonoBehaviour
         Entity BoxHp = GameManager.GetEntityForTag("BoxHp");
         Entity BoxMp = GameManager.GetEntityForTag("BoxMp");
         Entity BoxCoin = GameManager.GetEntityForTag("BoxCoin");
+        Entity BoxXp = GameManager.GetEntityForTag("BoxXp");
 
         float posx = planeSize.x * Length / 2;
         for (int i = 0; i < Width; i++)
@@ -107,14 +108,14 @@ public class MapManager : MonoBehaviour
                         //设置箱子里爆出来的物品
                         Box boxBox = entityManager.GetComponentData<Box>(box);
                         int boxRandomPrefab = random.NextInt(0, 100);
-                        if (boxRandomPrefab < 50)
+                        if (boxRandomPrefab < 45)
                             boxBox.spawnEntity = BoxHp;
-                        else if (boxRandomPrefab < 80)
+                        else if (boxRandomPrefab < 75)
                             boxBox.spawnEntity = BoxMp;
-                        else if (boxRandomPrefab < 90)
+                        else if (boxRandomPrefab < 85)
                             boxBox.spawnEntity = BoxCoin;
-                        else //爆的技能，先用coin代替
-                            boxBox.spawnEntity = BoxCoin;
+                        else 
+                            boxBox.spawnEntity = BoxXp;
                         entityManager.SetComponentData(box, boxBox);
                     }
 

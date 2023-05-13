@@ -16,7 +16,8 @@ class AutoDestoryBaker : Baker<AutoDestoryAuthoring>
         {
             destoryTime = authoring.destoryTime,
             score = authoring.score,
-            added = false
+            added = false,
+            xpadd = 0
         });
     }
 }

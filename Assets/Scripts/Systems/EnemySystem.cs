@@ -50,7 +50,7 @@ partial class EnemySystem : SystemBase
                     if (enemy.enemy.ValueRO.animatior != EnemyAnimatior.Dead)
                     {
                         enemy.enemy.ValueRW.animatior = EnemyAnimatior.DeadFirst;
-                        ecb.AddComponent(entityInQueryIndex, entity, new AutoDestory { destoryTime = enemy.enemy.ValueRO.deadStayTime, score = 10});
+                        ecb.AddComponent(entityInQueryIndex, entity, new AutoDestory { destoryTime = enemy.enemy.ValueRO.deadStayTime, score = 10, xpadd = 3});
                         ecb.RemoveComponent<PhysicsCollider>(entityInQueryIndex, entity);
                         ecb.RemoveComponent<PhysicsVelocity>(entityInQueryIndex, entity);
                     }

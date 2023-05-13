@@ -7,4 +7,5 @@ struct AutoDestory : IComponentData
     public float destoryTime;
     public int score;
     public bool added;
+    public int xpadd;
 }

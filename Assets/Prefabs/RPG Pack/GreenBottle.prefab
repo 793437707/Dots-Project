@@ -9783,7 +9783,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f412b912b0300574e9addbe534867b3c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: 7
+  type: 10
   value: 50
   AddCD: -1
   nextAddTime: 10000

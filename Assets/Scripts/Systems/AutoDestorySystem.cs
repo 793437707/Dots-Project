@@ -26,6 +26,7 @@ partial class AutoDestorySystem : SystemBase
 
         int dataCount = query.CalculateEntityCount();
         NativeArray<int> score = new NativeArray<int>(dataCount, Allocator.TempJob);
+        NativeArray<int> xp = new NativeArray<int>(dataCount, Allocator.TempJob);
 
         Entities
             .ForEach((ref AutoDestoryAspects autoDestory, in int entityInQueryIndex) =>
@@ -35,6 +36,7 @@ partial class AutoDestorySystem : SystemBase
                 {
                     autoDestory.autoDestory.ValueRW.added = true;
                     score[entityInQueryIndex] = autoDestory.autoDestory.ValueRO.score;
+                    xp[entityInQueryIndex] = autoDestory.autoDestory.ValueRO.xpadd;
                 }
                 autoDestory.lastTime -= deltaTime;
                 if(autoDestory.lastTime < 0f)
@@ -54,6 +56,12 @@ partial class AutoDestorySystem : SystemBase
                     sum += score[i];
                 }
                 WorldData.Inst.totalScore += sum;
+                int xpsum = 0;
+                for (int i = 0; i < xp.Length; i++)
+                {
+                    xpsum += xp[i];
+                }
+                CharacterData.Inst.xpAdd = xpsum;
             })
             .WithDisposeOnCompletion(score)
             .WithoutBurst()

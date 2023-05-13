@@ -1,13 +1,17 @@
 ﻿using Lean.Gui;
 using System.Collections;
+using System.Collections.Generic;
 using Unity.Mathematics;
 using UnityEngine;
+using System.Text;
 using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
 
     private GameObject Main, Setting, Loading, Game, Dead, Option;
+    private Queue<string> message;
+    Text LoadingText, MessageText;
 
     private void Awake()
     {
@@ -20,6 +24,9 @@ public class UIManager : MonoBehaviour
         Option = transform.Find("Option").gameObject;
 
         LoadingText = Loading.transform.Find("Loading").GetComponent<Text>();
+        MessageText = Game.transform.Find("MessageText").GetComponent<Text>();
+
+        message = new Queue<string>();
 
         Main.SetActive(true);
         Setting.SetActive(false);
@@ -29,7 +36,7 @@ public class UIManager : MonoBehaviour
         Option.SetActive(false);
     }
 
-    Text LoadingText;
+    
     public void SetLoadingText(string text)
     {
         LoadingText.text = text;
@@ -104,6 +111,8 @@ public class UIManager : MonoBehaviour
     {
         Loading.SetActive(false);
         Game.SetActive(true);
+        message.Clear();
+        MessageText.text = "";
     }
     public void LoadingToMain()
     {
@@ -154,5 +163,18 @@ public class UIManager : MonoBehaviour
         {
             QualitySettings.vSyncCount = 0;
         }
+    }
+
+    void AddMessage(string text)
+    {
+        message.Enqueue(string.Format("[{0:D2}:{1:D2}]{2}", WorldData.Inst.minute, WorldData.Inst.second, text));
+        if (message.Count > 6)
+            message.Dequeue();
+        StringBuilder str = new StringBuilder();
+        foreach(string t in message)
+        {
+            str.AppendLine(t);
+        }
+        MessageText.text = str.ToString();
     }
 }
