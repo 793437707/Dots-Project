@@ -28,7 +28,7 @@ public class WorldData
     public int minute => (int)totalSeconds / 60;
     public int second => (int)totalSeconds % 60;
 
-    public float different => Mathf.Min(70, Mathf.Log10(totalSeconds / 6 + 100) * 100 - 200);
+    public float different => Mathf.Min(70, (GameManager.gmManager.NanDu ? 10 : 1) * (Mathf.Log10(totalSeconds / 6 + 100) * 100 - 200));
     public float differentHpAdd => different * 3 / 100;
     public float differentDmgAdd => different * 2 / 100;
     public float differentSpawnAdd => different / 100;

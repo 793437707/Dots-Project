@@ -74,6 +74,13 @@ public class GameData
         File.WriteAllText(path, data);
     }
 
+    public void ClearData()
+    {
+        inst = new GameData();
+        inst.SavaData();
+        inst.LoadData();
+    }
+
     public int GetValueByEnum(GameDataEnum name)
     {
         return (int)GetType().GetField(name.ToString()).GetValue(this);

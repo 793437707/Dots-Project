@@ -13,7 +13,7 @@ public class AchievementUI : MonoBehaviour
     List<AchievementItem> items = new List<AchievementItem>();
     Text CoinText;
     Vector3 pos;
-    int coin;
+    int coin = -1;
 
     private void Awake()
     {

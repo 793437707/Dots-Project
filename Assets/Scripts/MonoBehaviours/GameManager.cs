@@ -25,6 +25,7 @@ class GameManager : MonoBehaviour
     public static UIManager uIManager;
     public static GameManager gameManager;
     public static DatabasesManager databasesManager;
+    public static GMManager gmManager;
 
     public static Dictionary<FixedString64Bytes, Entity> EntityForTagDictionary;
 
@@ -113,6 +114,14 @@ class GameManager : MonoBehaviour
         WorldData.Inst.totalSeconds = 0;
         WorldData.Inst.totalScore = 0;
         CharacterData.Inst.Reset();
+        if(gmManager.WuDi)
+        {
+            CharacterData.Inst.GetDamage = 0;
+        }
+        if(gmManager.ManJi)
+        {
+            CharacterData.Inst.level = CharacterData.Inst.MaxLevel;
+        }
 
         SwitchPause();
 

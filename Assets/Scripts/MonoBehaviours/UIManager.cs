@@ -9,7 +9,7 @@ using UnityEngine.UI;
 public class UIManager : MonoBehaviour
 {
 
-    private GameObject Main, Setting, Loading, Game, Dead, Option;
+    private GameObject Main, Setting, Loading, Game, Dead, Option, GM;
     private Queue<string> message;
     Text LoadingText, MessageText;
     bool isMessageModify = false;
@@ -23,6 +23,7 @@ public class UIManager : MonoBehaviour
         Game = transform.Find("Game").gameObject;
         Dead = transform.Find("Dead").gameObject;
         Option = transform.Find("Option").gameObject;
+        GM = transform.Find("GM").gameObject;
 
         LoadingText = Loading.transform.Find("Loading").GetComponent<Text>();
         MessageText = Game.transform.Find("MessageText").GetComponent<Text>();
@@ -35,6 +36,10 @@ public class UIManager : MonoBehaviour
         Game.SetActive(false);
         Dead.SetActive(false);
         Option.SetActive(false);
+        GM.SetActive(false);
+#if UNITY_EDITOR
+        Main.transform.Find("MainUI/GMBtn").gameObject.SetActive(true);
+#endif
     }
 
     
